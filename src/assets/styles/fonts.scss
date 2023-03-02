@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Inter-VariableFont_slnt\,wght';
+    src: url('../../../public/fonts/inter/Inter-VariableFont_slnt\,wght.ttf') format("truetype");
+    font-weight: normal;
+    font-size: normal;
+}
+
+@font-face {
+    font-family: 'Lora-VariableFont_wght.ttf';
+    src: url('../../../public/fonts/lora/Lora-VariableFont_wght.ttf') format("truetype");
+    font-weight: normal;
+    font-size: normal;
+}
+
+@font-face {
+    font-family: 'Inconsolata-VariableFont_wdth\,wght';
+    src: url('../../../public/fonts/inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf') format("truetype");
+    font-weight: normal;
+    font-size: normal;
+}
+
+
+$san-serif:  'Inter-VariableFont_slnt\,wght';
+$serif: 'Lora-VariableFont_wght.ttf';
+$mono: 'Inconsolata-VariableFont_wdth\,wght';
