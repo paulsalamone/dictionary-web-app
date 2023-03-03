@@ -23,3 +23,17 @@
 $san-serif:  'Inter-VariableFont_slnt\,wght';
 $serif: 'Lora-VariableFont_wght.ttf';
 $mono: 'Inconsolata-VariableFont_wdth\,wght';
+
+
+html[data-font="sanSerif"] {
+    font-family: $san-serif;
+}
+
+html[data-font="serif"] {
+    font-family: $serif;
+}
+
+
+html[data-font="mono"] {
+    font-family: $mono;
+}

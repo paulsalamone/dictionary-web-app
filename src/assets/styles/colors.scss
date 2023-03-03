@@ -10,3 +10,23 @@ $black: #050505;
 $purple: #A445ed;
 $red: #dd5252;
 
+
+// DARK MODE TECHNIQUE INSPIRED BY
+// https://livecodestream.dev/post/a-better-approach-to-dark-mode-on-your-website/
+
+html {
+    // background: $white;
+    // color: $black;
+    transition: color 300ms, background-color 300ms;
+}
+
+html[data-theme="dark"] {
+    background-color: $black;
+
+    color: $white;
+    // filter: invert(1) hue-rotate(180deg);
+}
+
+html[data-theme='dark'] img {
+    filter: invert(1) hue-rotate(180deg)
+}
