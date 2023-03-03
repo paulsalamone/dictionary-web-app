@@ -31,15 +31,14 @@ export default {
   },
   mounted() {
     this.htmlEl = document.getElementsByTagName('html')[0]
-    const themeProperty = localStorage.getItem('theme')
-    const fontProperty = localStorage.getItem('font')
-    console.log(themeProperty, fontProperty)
 
-    if (themeProperty) {
-      this.htmlEl.dataset.theme = themeProperty
+    if (localStorage.getItem('theme') === null) {
+      localStorage.setItem('theme', 'light')
+      this.htmlEl.dataset.theme = 'light'
     }
-    if (fontProperty) {
-      this.htmlEl.dataset.font = fontProperty
+    if (localStorage.getItem('font') === null) {
+      localStorage.setItem('font', 'san-serif')
+      this.htmlEl.dataset.font = 'san-serif'
     }
   },
   methods: {
