@@ -12,8 +12,6 @@
 <script setup >
 import { ref } from 'vue'
 import { useSearchStore } from '../stores/SearchStore'
-
-//store stuff
 const store = useSearchStore()
 
 // DATA
@@ -23,16 +21,37 @@ const word = ref('')
 const handleSubmit = () => {
   const reg = new RegExp('^[a-zA-Z]+$')
 
-  if (!reg.test(word.value)) {
-    handleInvalid(word.value)
-  } else {
+  if (reg.test(word.value)) {
     store.searchDictionary(word.value)
+  } else {
+    handleInvalid()
   }
+
+  //   reg.test(word.value) ? searchDictionaryLocal(word.value) : handleInvalid()
+
   word.value = ''
 }
 
-const handleInvalid = (word) => {
-  alert(`Please type letters only! "${word}" is not valid!`)
-  //   THIS WILL EVENTUALLY NEED TO TRIGGER THE 'ERROR VIEW'
+const handleInvalid = () => {
+  alert(`
+  LETTERS ONLY! 
+  
+  (this should trigger Error View)
+  `)
 }
+
+// const searchDictionaryLocal = async (word) => {
+//   // let searchResponse;
+
+//   await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       //   searchResponse = data
+//       console.log(data)
+//       this.$emit('api-response', word)
+//     })
+//     .catch((error) => {
+//       console.log('ERROR! ', error)
+//     })
+// }
 </script>

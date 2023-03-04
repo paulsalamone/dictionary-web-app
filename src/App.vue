@@ -7,6 +7,7 @@
 
     <main>
       <SearchBox />
+      <!-- @api-response="handleResponse" -->
       <DefinitionView />
       <NoDefinitionsView />
       <ErrorView />
@@ -56,6 +57,9 @@ export default {
       localStorage.setItem('font', font)
       this.htmlEl.dataset.font = font
     }
+    // handleResponse(word) {
+    //   console.log('+++ ', word)
+    // }
   }
 }
 </script>
