@@ -1,8 +1,8 @@
 @import './colors.scss', './fonts.scss';
 
-* {
-  border: 1px dotted grey;
-}
+// * {
+//   border: 1px dotted grey;
+// }
 
 .choose-san-serif {
   $fontChoice: $san-serif;
@@ -25,8 +25,8 @@
 }
 
 #wrapper {
-width: 80%;
-max-width: 750px;
+  width: 80%;
+  max-width: 750px;
 }
 
 
@@ -34,4 +34,53 @@ header {
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+#style-selectors {
+  display: flex;
+  gap: 1rem;
+}
+
+#search-box {
+  margin: 1rem 0 2rem 0;
+
+  background-color: $lightergrey;
+  border-radius: 5px;
+  ;
+  padding: 1rem;
+
+
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      // padding: 1rem;
+      background-color: $lightergrey;
+      font-size: 2rem;
+      border: none;
+    }
+
+    input:enabled {
+      border-color: $lightergrey;
+
+    }
+
+    button {
+      box-shadow: 2px 2px 5px grey;
+      background-color: white;
+      // display: flex;
+      // align-items: center;
+      color: $purple;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      border-radius: 5px;
+    }
+
+    button:active {
+      transform: translate(1px, 1px)
+    }
+  }
+
 }

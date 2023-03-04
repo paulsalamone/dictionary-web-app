@@ -1,6 +1,6 @@
 <template>
   <div id="definition-view">
-    <h1>YOUR WORD</h1>
+    <h1>YOUR WORD:</h1>
     <!-- pronunciation -->
     <p>pronunication</p>
     <!-- words -->
@@ -10,17 +10,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'definition-view',
-  data() {
-    return {}
-  },
-  mounted() {
-    // get state? API?
-  },
-  methods: {}
-}
+<script >
+import { mapStores } from 'pinia'
 </script>
 
 <style>

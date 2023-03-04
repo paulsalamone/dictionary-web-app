@@ -1,36 +1,38 @@
 <template>
   <section id="search-box">
     <form action="" @submit.prevent="handleSubmit()">
-      <input type="text" placeholder="enter word" v-model="searchText" />
-      <button type="submit">go</button>
+      <input type="text" placeholder="enter word" v-model="word" />
+      <button type="submit">
+        <img src="../assets/images/icon-search.svg" alt="search icon" />search
+      </button>
     </form>
   </section>
 </template>
 
-<script>
-export default {
-  name: 'search-box',
-  data() {
-    return {
-      searchText: ''
-    }
-  },
-  methods: {
-    handleSubmit() {
-      console.log(this.searchText)
+<script setup >
+import { ref } from 'vue'
+import { useSearchStore } from '../stores/SearchStore'
 
-      // VALIDATE TEXT
+//store stuff
+const store = useSearchStore()
 
-      // SUBMIT TO API
+// DATA
+const word = ref('')
 
-      // HANDLE ERRORS
+// METHODS
+const handleSubmit = () => {
+  const reg = new RegExp('^[a-zA-Z]+$')
 
-      //   RESET TEXT
-      this.searchText = ''
-    }
+  if (!reg.test(word.value)) {
+    handleInvalid(word.value)
+  } else {
+    store.searchDictionary(word.value)
   }
+  word.value = ''
+}
+
+const handleInvalid = (word) => {
+  alert(`Please type letters only! "${word}" is not valid!`)
+  //   THIS WILL EVENTUALLY NEED TO TRIGGER THE 'ERROR VIEW'
 }
 </script>
-
-<style>
-</style>

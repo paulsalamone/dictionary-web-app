@@ -35,10 +35,14 @@ export default {
     if (localStorage.getItem('theme') === null) {
       localStorage.setItem('theme', 'light')
       this.htmlEl.dataset.theme = 'light'
+    } else {
+      this.htmlEl.dataset.theme = localStorage.getItem('theme')
     }
     if (localStorage.getItem('font') === null) {
       localStorage.setItem('font', 'san-serif')
       this.htmlEl.dataset.font = 'san-serif'
+    } else {
+      this.htmlEl.dataset.font = localStorage.getItem('font')
     }
   },
   methods: {
