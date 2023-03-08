@@ -26,9 +26,6 @@ const handleSubmit = () => {
   } else {
     handleInvalid()
   }
-
-  //   reg.test(word.value) ? searchDictionaryLocal(word.value) : handleInvalid()
-
   word.value = ''
 }
 
@@ -39,19 +36,4 @@ const handleInvalid = () => {
   (this should trigger Error View)
   `)
 }
-
-// const searchDictionaryLocal = async (word) => {
-//   // let searchResponse;
-
-//   await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       //   searchResponse = data
-//       console.log(data)
-//       this.$emit('api-response', word)
-//     })
-//     .catch((error) => {
-//       console.log('ERROR! ', error)
-//     })
-// }
 </script>
