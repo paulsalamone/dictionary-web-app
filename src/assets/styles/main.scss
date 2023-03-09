@@ -1,4 +1,4 @@
-@import './colors.scss', './fonts.scss';
+@import './colors.scss', './fonts.scss', './layout.scss';
 
 // * {
 //   border: 1px dotted grey;
@@ -44,38 +44,45 @@ header {
 #search-box {
   margin: 1rem 0 2rem 0;
 
-  background-color: $lightergrey;
-  border-radius: 5px;
-  ;
-  padding: 1rem;
+
 
 
   form {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    background-color: $lightergrey;
+    border-radius: 7px;
+    padding: 1rem;
 
-    input {
-      // padding: 1rem;
+    input[type="search"] {
       background-color: $lightergrey;
       font-size: 2rem;
-      border: none;
+      border: 1px solid transparent;
+      border-radius: inherit;
+      width: 100%;
     }
 
-    input:enabled {
-      border-color: $lightergrey;
-
+    input[type="search"]:focus {
+      outline: none;
     }
 
-    button {
-      box-shadow: 2px 2px 5px grey;
-      background-color: white;
-      // display: flex;
-      // align-items: center;
+    input[type="search"]::placeholder {
+      outline: none;
+    }
+
+    input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+    button[type="submit"] {
+      background-color: $lightergrey;
       color: $purple;
       padding: 1rem 2rem;
       font-size: 1.5rem;
-      border-radius: 5px;
+      border: none;
     }
 
     button:active {
@@ -86,13 +93,28 @@ header {
 }
 
 #definition-view {
-  #phonemes {
-    color: $purple;
+
+  .header {
+ display: flex;
+justify-content: space-between;
+align-items: center;
+
+.word-top * {
+  margin: 0px;
+}
   }
+.pos {
+  font-weight: 700;
+  font-style: italic ;
+}
+  .meaning {
+    color: $mediumgrey;
+  }
+
+
 }
 
 
 .purple {
   color: $purple;
-
 }

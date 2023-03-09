@@ -1,9 +1,9 @@
 <template>
   <section id="search-box">
     <form action="" @submit.prevent="handleSubmit()">
-      <input type="text" placeholder="enter word" v-model="word" />
+      <input type="search" placeholder="enter word" v-model="word" />
       <button type="submit">
-        <img src="../assets/images/icon-search.svg" alt="search icon" />search
+        <img src="../assets/images/icon-search.svg" alt="search icon" />
       </button>
     </form>
   </section>
