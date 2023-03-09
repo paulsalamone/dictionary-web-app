@@ -4,6 +4,13 @@
 //   border: 1px dotted grey;
 // }
 
+@mixin flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
 .choose-san-serif {
   $fontChoice: $san-serif;
 }
@@ -37,14 +44,101 @@ header {
 }
 
 #style-selectors {
-  display: flex;
-  gap: 1rem;
+
+  // * {
+  //   border: 1px solid black;
+  // }
+
+  @include flex-row;
+
+  #colors {
+    @include flex-row;
+  }
+
+  select {
+    display: flex;
+    gap: 1rem;
+    -webkit-appearance: none;
+    /* Remove default arrow on Chrome/Safari */
+    -moz-appearance: none;
+    /* Remove default arrow on Firefox */
+    appearance: none;
+    /* Remove default arrow on other browsers */
+
+    background-color: transparent;
+    /* Set the background to transparent */
+    background-image: url('../images/icon-arrow-down.svg');
+    /* Set your custom arrow image */
+    background-repeat: no-repeat;
+    background-position: right center;
+    /* Position the arrow to the right of the select box */
+    padding-right: 20px;
+    /* Add some padding to the right of the select box to make room for the arrow */
+    border: none;
+
+    /* Remove the border around the select box */
+    /* Prevent the */
+    // #font-selector {
+    //   border: 0px solid transparent;
+    // }
+
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  .toggler {
+    transition: background-color 200ms;
+    box-sizing: border-box;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: background-color 500ms;
+  }
+
+  .toggler-light {
+    border: 3px solid $darkgrey1;
+    background-color: $darkgrey1;
+
+
+
+  }
+
+  .toggler-dark {
+    border: 3px solid $purple;
+    background-color: $purple;
+
+
+  }
+
+  .knob {
+    position: absolute;
+    right: 0px;
+    background-color: white;
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+    transition: right 500ms;
+  }
+
+  .knob-light {
+    right: 1px;
+  }
+
+  .knob-dark {
+    right: 20px;
+  }
+
+
 }
+
 
 #search-box {
   margin: 1rem 0 2rem 0;
-
-
 
 
   form {
@@ -72,9 +166,11 @@ header {
     }
 
     input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+      display: none;
+    }
 
 
     button[type="submit"] {
@@ -95,18 +191,20 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 #definition-view {
 
   .header {
- display: flex;
-justify-content: space-between;
-align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-.word-top * {
-  margin: 0px;
-}
+    .word-top * {
+      margin: 0px;
+    }
   }
-.pos {
-  font-weight: 700;
-  font-style: italic ;
-}
+
+  .pos {
+    font-weight: 700;
+    font-style: italic;
+  }
+
   .meaning {
     color: $mediumgrey;
   }

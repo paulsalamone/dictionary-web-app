@@ -48,18 +48,14 @@ export default {
   },
   methods: {
     handleTheme(theme) {
-      console.log('handleTheme theme:', theme)
+      // console.log('handleTheme theme:', theme)
       localStorage.setItem('theme', theme)
       this.htmlEl.dataset.theme = theme
     },
     handleFont(font) {
-      console.log('handleFont font: ', font)
       localStorage.setItem('font', font)
       this.htmlEl.dataset.font = font
     }
-    // handleResponse(word) {
-    //   console.log('+++ ', word)
-    // }
   }
 }
 </script>

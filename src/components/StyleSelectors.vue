@@ -2,20 +2,18 @@
   <div id="style-selectors">
     <!-- FONTS -->
     <div id="fonts">
-      <h2>FONTS:</h2>
-      <p>
-        <button @click="toggleFont('san-serif')">San Serif</button>
-        <button @click="toggleFont('serif')">Serif</button>
-        <button @click="toggleFont('mono')">mono</button>
-      </p>
+      <select v-model="currentFont" id="font-selector">
+        <option value="san-serif">Sans Serif</option>
+        <option value="serif">Serif</option>
+        <option value="mono">Mono</option>
+      </select>
     </div>
     <div id="colors">
       <!-- COLORS -->
-      <h2>COLORS:</h2>
-      <p>
-        <button @click="toggleTheme('dark')">Dark</button>
-        <button @click="toggleTheme('light')">Light Mode</button>
-      </p>
+      <div :class="`toggler toggler-${currentTheme}`" @click="toggleTheme()">
+        <div :class="`knob knob-${currentTheme}`"></div>
+      </div>
+      <img src="../assets/images/icon-moon.svg" alt="moon" />
     </div>
   </div>
 </template>
@@ -23,19 +21,46 @@
 <script>
 export default {
   name: 'style-selectors',
+  data() {
+    return {
+      currentFont: null,
+      currentTheme: null
+      //   togglerStyle: null
+    }
+  },
+  //   computed: {
+  //     currentTheme() {
+  //       return localStorage.getItem('theme')
+  //     }
+  //   },
+  mounted() {
+    this.currentFont = localStorage.getItem('font')
 
+    this.currentTheme = localStorage.getItem('theme')
+
+    this.currentTheme === 'light'
+      ? (this.togglerStyle = 'toggler-light')
+      : (this.togglerStyle = 'toggler-dark')
+  },
+  watch: {
+    currentFont(val) {
+      this.$emit('setFont', val)
+    }
+    // togglerStyle(val) {
+    //   console.log(' WATCH toggler style', val)
+    // }
+  },
   methods: {
-    toggleTheme(theme) {
-      console.log('toggleTheme: ', theme)
-      //   this.htmlElData.dataset.theme = theme
-      this.$emit('setTheme', theme)
-      //   localStorage.setItem('theme', theme)
+    toggleTheme() {
+      this.currentTheme === 'dark' ? (this.currentTheme = 'light') : (this.currentTheme = 'dark')
+
+      console.log('UHHH', this.currentTheme)
+      localStorage.setItem('theme', this.currentTheme)
+
+      this.$emit('setTheme', this.currentTheme)
     },
-    toggleFont(font) {
-      console.log('toggleFont: ', font)
-      //   this.htmlElData.dataset.font = font
-      //   localStorage.setItem('font', font)
-      this.$emit('setFont', font)
+    selectFont(value) {
+      this.$emit('setFont', value)
     }
   }
 }
