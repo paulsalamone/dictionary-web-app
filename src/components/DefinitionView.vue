@@ -1,7 +1,7 @@
 <template>
 <div>
 <!-- NO DEFINITIONS -->
-  <div v-if="!hasResults" id="no-definitions-view">
+  <div v-if="!hasResults && !store.empty && !store.invalid" id="no-definitions-view">
     <img src="../assets/images/" alt="" />
     <h1>🙁</h1>
     <h2>No Definitions Found</h2>
@@ -12,7 +12,7 @@
   </div>
 
     <!-- DEFINITION VIEW -->
-  <div v-if="hasResults && store.searchString" id="definition-view" >
+  <div v-if="hasResults && store.searchString && !store.empty && !store.invalid" id="definition-view" >
     <div class="header">
       <div class="word-top">
     <h1>{{ results.word }}</h1>

@@ -5,11 +5,20 @@ export const useSearchStore = defineStore({
     state: () => ({
         searchString: '',
         searchResponse: {},
-        nothingFound: false
+        empty: false,
+        invalid: false
     }),
 
     actions: {
+        handleEmpty() {
+            this.empty = true;
+        },
+        handleInvalid() {
+            this.invalid = true;
+        },
         async searchDictionary(word) {
+            this.empty = false;
+            this.invalid = false
             this.searchString = word;
 
 
@@ -18,7 +27,7 @@ export const useSearchStore = defineStore({
 
                 if (response.status === 404) {
                     console.log("404!!!!!!!!")
-                    this.nothingFound = true;
+
                 }
                 const data = await response.json()
 

@@ -8,7 +8,6 @@
     <main>
       <SearchBox />
       <DefinitionView />
-      <ErrorView />
     </main>
   </div>
 </template>
@@ -17,13 +16,13 @@
 import SearchBox from './components/SearchBox.vue'
 import StyleSelectors from './components/StyleSelectors.vue'
 import DefinitionView from './components/DefinitionView.vue'
-import ErrorView from './components/ErrorView.vue'
+
 import { useSearchStore } from './stores/SearchStore'
 // const store = useSearchStore()
 
 export default {
   name: 'app',
-  components: { SearchBox, StyleSelectors, DefinitionView, ErrorView },
+  components: { SearchBox, StyleSelectors, DefinitionView },
   data() {
     return {
       htmlEl: null

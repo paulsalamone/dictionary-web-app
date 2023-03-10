@@ -140,6 +140,11 @@ header {
 #search-box {
   margin: 1rem 0 2rem 0;
 
+  .empty-search {
+    border: 3px solid $red;
+  }
+
+
 
   form {
     width: 100%;
@@ -210,9 +215,4 @@ header {
   }
 
 
-}
-
-
-.purple {
-  color: $purple;
 }
