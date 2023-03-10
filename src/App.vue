@@ -7,9 +7,7 @@
 
     <main>
       <SearchBox />
-      <!-- @api-response="handleResponse" -->
       <DefinitionView />
-      <NoDefinitionsView />
       <ErrorView />
     </main>
   </div>
@@ -19,12 +17,13 @@
 import SearchBox from './components/SearchBox.vue'
 import StyleSelectors from './components/StyleSelectors.vue'
 import DefinitionView from './components/DefinitionView.vue'
-import NoDefinitionsView from './components/NoDefinitionsView.vue'
 import ErrorView from './components/ErrorView.vue'
+import { useSearchStore } from './stores/SearchStore'
+// const store = useSearchStore()
 
 export default {
   name: 'app',
-  components: { SearchBox, StyleSelectors, DefinitionView, NoDefinitionsView, ErrorView },
+  components: { SearchBox, StyleSelectors, DefinitionView, ErrorView },
   data() {
     return {
       htmlEl: null
@@ -45,6 +44,9 @@ export default {
     } else {
       this.htmlEl.dataset.font = localStorage.getItem('font')
     }
+    const store = useSearchStore()
+
+    store.searchDictionary('dictionary')
   },
   methods: {
     handleTheme(theme) {

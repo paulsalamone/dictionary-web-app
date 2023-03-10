@@ -4,7 +4,8 @@ export const useSearchStore = defineStore({
     id: 'dictionary',
     state: () => ({
         searchString: '',
-        searchResponse: {}
+        searchResponse: {},
+        nothingFound: false
     }),
 
     actions: {
@@ -12,11 +13,22 @@ export const useSearchStore = defineStore({
             this.searchString = word;
 
 
-            const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+            try {
+                const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
 
-            const data = await response.json()
+                if (response.status === 404) {
+                    console.log("404!!!!!!!!")
+                    this.nothingFound = true;
+                }
+                const data = await response.json()
 
-            data ? this.searchResponse = data : null
+                data ? this.searchResponse = data : null
+
+
+            } catch (error) {
+                console.log(typeof error)
+
+            }
 
 
         }
