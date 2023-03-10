@@ -62,7 +62,7 @@ watch(loaded, (newVal, oldVal) => {
 
 // })
 watch(results, (val) => {
-  console.log('results watcher:', Object.keys(val).length)
+  //   console.log('results watcher:', Object.keys(val).length)
   if (Object.keys(val).length > 0) {
     val ? (audioLink.value = results.value.phonetics.audio) : null
   }
