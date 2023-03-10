@@ -1,36 +1,51 @@
 <template>
   <section id="search-box">
-    <form action="" @submit.prevent="handleSubmit()">
-      <input type="text" placeholder="enter word" v-model="searchText" />
-      <button type="submit">go</button>
+    <form
+      action=""
+      @submit.prevent="handleSubmit()"
+      :class="store.empty || store.invalid ? 'empty-search' : null"
+    >
+      <input type="search" placeholder="enter word" v-model="word" />
+      <button type="submit">
+        <img src="../assets/images/icon-search.svg" alt="search icon" />
+      </button>
     </form>
+    <p v-if="store.empty" class="red">Whoops, can't be empty...</p>
+    <p v-if="store.invalid" class="red">
+      Please use letters only, no numbers or special characters...
+    </p>
   </section>
 </template>
 
-<script>
-export default {
-  name: 'search-box',
-  data() {
-    return {
-      searchText: ''
-    }
-  },
-  methods: {
-    handleSubmit() {
-      console.log(this.searchText)
+<script setup >
+import { ref } from 'vue'
+import { useSearchStore } from '../stores/SearchStore'
+const store = useSearchStore()
 
-      // VALIDATE TEXT
+// DATA
+const word = ref('')
 
-      // SUBMIT TO API
+// METHODS
+const handleSubmit = () => {
+  const reg = new RegExp('^[a-zA-Z]+$')
 
-      // HANDLE ERRORS
-
-      //   RESET TEXT
-      this.searchText = ''
-    }
+  if (word.value === '') {
+    handleEmpty()
+    return
   }
+  if (reg.test(word.value)) {
+    store.searchDictionary(word.value)
+  } else {
+    handleInvalid()
+  }
+  word.value = ''
+}
+
+const handleEmpty = () => {
+  console.log('EMPTY')
+  store.handleEmpty()
+}
+const handleInvalid = () => {
+  store.handleInvalid()
 }
 </script>
-
-<style>
-</style>
