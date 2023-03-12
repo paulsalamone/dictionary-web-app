@@ -10,7 +10,7 @@
       search again at later time or head to the web instead.
     </p>
   </div>
-
+<p>store.searchString: {{store.searchString}}</p>
     <!-- DEFINITION VIEW -->
   <div v-if="hasResults && store.searchString && !store.empty && !store.invalid" id="definition-view" >
     <div class="header">
@@ -26,10 +26,8 @@
         <h2 class="meaning">Meaning</h2>
         <h3>• {{definition.definition}}</h3>
         <p v-if="definition.synonyms">SYNONYMS:{{definition.synonyms}}</p>
-                  <p v-if="definition.antonyms.length">ANTONYMS: {{definition.antonyms}}</p>
-                          <p v-if="definition.example">EXAMPLE: {{definition.example}}</p>
-
-
+        <p v-if="definition.antonyms.length">ANTONYMS: {{definition.antonyms}}</p>
+        <p v-if="definition.example">EXAMPLE: {{definition.example}}</p>
       </p>
     </div>
     <a :href="results.sourceUrls">{{ results.sourceUrls }}</a>
@@ -47,22 +45,23 @@ const store = useSearchStore()
 let results = ref('')
 let audioLink = ref('')
 let hasResults = ref(true)
+
 const loaded = computed(() => {
   return Object(store.searchResponse[0])
 })
 
 watch(loaded, (newVal, oldVal) => {
+  console.log('watch loaded')
+
   results.value = newVal
-  //   console.log(results.value)
 
   hasResults.value = Object.keys(newVal).length > 0
 })
 
-// const hasResults = computed(() => {
-
-// })
 watch(results, (val) => {
-  //   console.log('results watcher:', Object.keys(val).length)
+  console.log('watch results val:', val)
+  console.log('watch length:', Object.keys(val).length > 0)
+  // console.log('results watcher:', val)
   if (Object.keys(val).length > 0) {
     val ? (audioLink.value = results.value.phonetics.audio) : null
   }

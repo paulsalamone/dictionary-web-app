@@ -51,14 +51,19 @@ const isFocus = ref(false)
 // METHODS
 const handleSubmit = () => {
   const reg = new RegExp('^[a-zA-Z]+$')
-  console.log('handle submit')
   if (word.value === '') {
     handleEmpty()
+    word.value = ''
+
     return
   }
+
   if (reg.test(word.value)) {
+    console.log('SEARCH DICT')
     store.searchDictionary(word.value)
   } else {
+    console.log('HANDLE INVAL')
+    word.value = ''
     handleInvalid()
   }
   word.value = ''
@@ -67,7 +72,7 @@ const handleSubmit = () => {
 }
 
 const handleEmpty = () => {
-  console.log('EMPTY')
+  // console.log('EMPTY')
   store.handleEmpty()
 }
 const handleInvalid = () => {
@@ -75,25 +80,25 @@ const handleInvalid = () => {
 }
 
 const handleFocus1 = () => {
-  console.log('input focus')
+  // console.log('input focus')
   const el = document.getElementById('search-form')
   el.classList.add('form-focus')
   isFocus.value = true
 }
 const handleBlur1 = () => {
-  console.log('input blur')
+  // console.log('input blur')
   const el = document.getElementById('search-form')
   el.classList.remove('form-focus')
   isFocus.value = false
 }
 const handleFocus2 = () => {
-  console.log('button focus')
+  // console.log('button focus')
   const el = document.getElementById('submit-button')
   el.classList.add('form-focus')
   isFocus.value = true
 }
 const handleBlur2 = () => {
-  console.log('button blur')
+  // console.log('button blur')
   const el = document.getElementById('submit-button')
   el.classList.remove('form-focus')
   isFocus.value = false

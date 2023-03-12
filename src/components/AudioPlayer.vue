@@ -47,7 +47,8 @@ export default {
   mounted() {
     // console.log('MOUNTED')
     this.store = useSearchStore()
-    this.store.searchDictionary('dictionary')
+    // why the hell is this here?
+    // this.store.searchDictionary('dictionary')
   },
 
   methods: {
