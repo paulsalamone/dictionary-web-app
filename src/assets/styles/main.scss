@@ -141,7 +141,7 @@ header {
   margin: 1rem 0 2rem 0;
 
   .empty-search {
-    border: 3px solid $red;
+    border: 2px solid $red;
   }
 
 
@@ -151,8 +151,11 @@ header {
     display: flex;
     justify-content: space-between;
     background-color: $lightergrey;
-    border-radius: 7px;
+    border-radius: 16px;
     padding: 1rem;
+    border: 2px solid white;
+    transition: border-color 300ms;
+    box-sizing: border-box;
 
     input[type="search"] {
       background-color: $lightergrey;
@@ -191,7 +194,14 @@ header {
     }
   }
 
+  .form-focus {
+    border: 3px solid $purple;
+    box-shadow: 0 0 3px #a445ed54;
+    ;
+  }
 }
+
+
 
 #definition-view {
 

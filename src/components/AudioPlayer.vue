@@ -32,11 +32,11 @@ export default {
 
       this.firstAudioFile = phoneticsArray.filter((e) => e.audio.length > 0)
 
-      console.log('this.audioFile', this.firstAudioFile.length)
+      // console.log('this.audioFile', this.firstAudioFile.length)
 
       if (this.firstAudioFile.length > 0) {
         this.audioFile = this.firstAudioFile[0].audio
-        console.log('this.audioFile', this.audioFile)
+        // console.log('this.audioFile', this.audioFile)
         this.showAudio = true
       } else {
         this.audioFile = ''
@@ -45,7 +45,7 @@ export default {
     }
   },
   mounted() {
-    console.log('MOUNTED')
+    // console.log('MOUNTED')
     this.store = useSearchStore()
     this.store.searchDictionary('dictionary')
   },

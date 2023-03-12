@@ -11,9 +11,11 @@ export const useSearchStore = defineStore({
 
     actions: {
         handleEmpty() {
+            console.log('handle empty')
             this.empty = true;
         },
         handleInvalid() {
+            console.log('handle invalid')
             this.invalid = true;
         },
         async searchDictionary(word) {
