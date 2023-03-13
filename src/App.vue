@@ -28,6 +28,11 @@ export default {
       store: null
     }
   },
+  created() {
+    this.store = useSearchStore()
+
+    this.store.searchDictionary('keyboard')
+  },
   mounted() {
     this.htmlEl = document.getElementsByTagName('html')[0]
 
@@ -43,9 +48,9 @@ export default {
     } else {
       this.htmlEl.dataset.font = localStorage.getItem('font')
     }
-    this.store = useSearchStore()
+    // this.store = useSearchStore()
 
-    this.store.searchDictionary('dictionary')
+    // this.store.searchDictionary('keyboard')
   },
   methods: {
     handleTheme(theme) {
@@ -58,7 +63,7 @@ export default {
       this.htmlEl.dataset.font = font
     },
     handleReload() {
-      this.store.searchDictionary('dictionary')
+      this.store.searchDictionary('keyboard')
     }
   }
 }
