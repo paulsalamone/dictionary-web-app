@@ -1,11 +1,11 @@
 <template>
-  <div id="wrapper" class="choose-san-serif">
-    <header>
+  <div class="b-wrapper">
+    <header class="b-header">
       <img src="./assets/images/logo.svg" alt="dictionary logo" @click="handleReload()" />
       <StyleSelectors :html-el="htmlEl" @set-theme="handleTheme" @set-font="handleFont" />
     </header>
 
-    <main>
+    <main class="b-main">
       <SearchBox />
       <DefinitionView />
     </main>
@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     handleTheme(theme) {
-      // console.log('handleTheme theme:', theme)
+      console.log('handleTheme theme:', theme)
       localStorage.setItem('theme', theme)
       this.htmlEl.dataset.theme = theme
     },

@@ -1,8 +1,5 @@
 @import './colors.scss', './fonts.scss', './layout.scss';
 
-// * {
-//   border: 1px dotted grey;
-// }
 
 @mixin flex-row {
   display: flex;
@@ -11,142 +8,103 @@
   margin: 10px;
 }
 
-.choose-san-serif {
-  $fontChoice: $san-serif;
-}
-
-.choose-serif {
-  $fontChoice: $serif;
-}
-
-.choose-mono {
-  $fontChoice: $mono;
-}
-
 #app {
-  height: 100vh;
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   padding: 1rem;
 }
 
-#wrapper {
+.b-wrapper {
   width: 80%;
   max-width: 750px;
 }
 
 
-header {
+.b-header {
   display: flex;
   width: 100%;
   justify-content: space-between;
+
 }
 
-#style-selectors {
-
-  // * {
-  //   border: 1px solid black;
-  // }
-
+.b-style-selectors {
   @include flex-row;
 
-  #colors {
+  .b-fonts {
     @include flex-row;
-  }
+    margin-right: 2rem;
 
-  select {
-    display: flex;
-    gap: 1rem;
-    -webkit-appearance: none;
-    /* Remove default arrow on Chrome/Safari */
-    -moz-appearance: none;
-    /* Remove default arrow on Firefox */
-    appearance: none;
-    /* Remove default arrow on other browsers */
+    &__select {
+      display: flex;
+      gap: 1rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: transparent;
+      background-image: url('../images/icon-arrow-down.svg');
+      background-repeat: no-repeat;
+      background-position: right center;
+      padding-right: 20px;
+      border: none;
+    }
 
-    background-color: transparent;
-    /* Set the background to transparent */
-    background-image: url('../images/icon-arrow-down.svg');
-    /* Set your custom arrow image */
-    background-repeat: no-repeat;
-    background-position: right center;
-    /* Position the arrow to the right of the select box */
-    padding-right: 20px;
-    /* Add some padding to the right of the select box to make room for the arrow */
-    border: none;
-
-    /* Remove the border around the select box */
-    /* Prevent the */
-    // #font-selector {
-    //   border: 0px solid transparent;
-    // }
-
-  }
-
-  select:focus {
-    outline: none;
-  }
-
-  .toggler {
-    transition: background-color 200ms;
-    box-sizing: border-box;
-    width: 40px;
-    height: 20px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    transition: background-color 500ms;
-  }
-
-  .toggler-light {
-    border: 3px solid $darkgrey1;
-    background-color: $darkgrey1;
-
-
-
-  }
-
-  .toggler-dark {
-    border: 3px solid $purple;
-    background-color: $purple;
-
-
-  }
-
-  .knob {
-    position: absolute;
-    right: 0px;
-    background-color: white;
-    height: 14px;
-    width: 14px;
-    border-radius: 7px;
-    transition: right 500ms;
-  }
-
-  .knob-light {
-    right: 1px;
-  }
-
-  .knob-dark {
-    right: 20px;
+    &__select:focus {
+      outline: none;
+    }
   }
 
 
+  .b-colors {
+    @include flex-row;
+
+    &__toggler {
+      box-sizing: border-box;
+      margin-right: 1rem;
+      width: 40px;
+      height: 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      transition: background-color 300ms;
+
+      &-light {
+        border: 3px solid $darkgrey1;
+        background-color: $darkgrey1;
+      }
+
+      &-dark {
+        border: 3px solid $purple;
+        background-color: $purple;
+      }
+    }
+
+    &__knob {
+      position: absolute;
+      right: 0px;
+      background-color: white;
+      height: 14px;
+      width: 14px;
+      border-radius: 7px;
+      transition: right 500ms;
+
+      &-light {
+        right: 1px;
+      }
+
+      &-dark {
+        right: 20px;
+      }
+    }
+  }
 }
 
 
-#search-box {
+.b-search {
   margin: 1rem 0 2rem 0;
 
-  .empty-search {
-    border: 2px solid $red;
-  }
 
-
-
-  form {
+  .b-search__form {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -194,7 +152,11 @@ header {
     }
   }
 
-  .form-focus {
+  .b-search__form-empty {
+    border: 2px solid $red;
+  }
+
+  .b-search__form-focus {
     border: 3px solid $purple;
     box-shadow: 0 0 3px #a445ed54;
     ;
@@ -203,30 +165,28 @@ header {
 
 
 
-#definition-view {
+.b-definitions {
 
-  .header {
+  &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .word-top * {
+    &__top * {
       margin: 0px;
     }
   }
 
-  .pos-block {
+  &__pos {
     font-weight: 700;
     font-style: italic;
     display: flex;
     place-items: center center;
 
-    * {
-      // border: 1px dotted red;
-    }
 
 
-    .heading-pos {
+
+    &-heading {
       display: inline-block;
       width: fit-content;
       margin: 0;
@@ -234,42 +194,41 @@ header {
       margin-top: 2.25rem;
     }
 
-    .pos-line {
+    &-line {
       display: inline-block;
       border-top: 2px solid $lightgrey;
       width: 100%;
       margin-top: 2.25rem;
     }
-
-    .example {
-      color: $mediumgrey
-    }
-
   }
 
-  .definition-bullet::marker {
+
+
+
+  &__bullet::marker {
     color: $purple;
   }
 
 
-  .synonyms {
+  &__synonyms {
     color: $purple;
     margin-left: 1rem;
     text-decoration: none;
     cursor: pointer;
   }
 
-  .synonyms:hover {
+  &__synonyms:hover {
     text-decoration: underline;
   }
 
 
-  .source {
-    border-top: 1px solid $mediumgrey;
+  &__source {
+    border-top: 2px solid $lightgrey;
     width: 100%;
     margin-top: 2rem;
     padding-top: 1rem;
     margin-bottom: 3rem;
   }
+
 
 }

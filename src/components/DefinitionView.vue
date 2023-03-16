@@ -2,12 +2,13 @@
   <div>
     <!-- DEFINITION VIEW -->
     <div
+      class="b-definitions"
       v-if="hasResults && store.searchString && !store.empty && !store.invalid"
       id="definition-view"
     >
       <!-- HEADER -->
-      <div class="header">
-        <div class="word-top">
+      <div class="b-definitions__header">
+        <div class="b-definitions__top">
           <h1 class="size-64 bold darkgrey3">{{ results.word }}</h1>
           <h4 class="size-24 purple">{{ results.phonetic }}</h4>
         </div>
@@ -17,9 +18,11 @@
       <!-- MEANINGS -->
       <div v-for="(meaning, index) in results.meanings" :key="index">
         <!-- POS -->
-        <div class="pos-block">
-          <h2 class="italic size-24 darkgrey3 heading-pos">{{ meaning.partOfSpeech }}</h2>
-          <div class="pos-line"></div>
+        <div class="b-definitions__pos">
+          <h2 class="italic size-24 darkgrey3 b-definitions__pos-heading">
+            {{ meaning.partOfSpeech }}
+          </h2>
+          <div class="b-definitions__pos-line"></div>
         </div>
 
         <!-- "MEANING" -->
@@ -28,7 +31,7 @@
         <!-- DEFINITIONS -->
         <div v-for="(definition, index) in meaning.definitions" :key="index">
           <ul>
-            <li class="definition-bullet darkgrey2 size-18">
+            <li class="b-definitions__bullet darkgrey2 size-18">
               {{ definition.definition }}
             </li>
           </ul>
@@ -58,7 +61,7 @@
             <span
               v-for="(antonym, index) in definition.antonyms"
               :key="index"
-              class="synonyms"
+              class="b-definitions__synonyms"
               @click.prevent="handleLink(antonym)"
               >{{ antonym }}</span
             >
@@ -73,14 +76,14 @@
         </div>
       </div>
       <!-- <hr /> -->
-      <div class="source">
+      <div class="b-definitions__source">
         <a :href="results.sourceUrls" class="size-16 mediumgrey mt-2">{{
           results.sourceUrls[0]
         }}</a>
       </div>
     </div>
     <!-- NO DEFINITIONS -->
-    <div v-if="!hasResults && !store.empty && !store.invalid" id="no-definitions-view">
+    <div v-if="!hasResults && !store.empty && !store.invalid" class="b-definitions__none">
       <img src="../assets/images/" alt="" />
       <h1>🙁</h1>
       <h2>No Definitions Found</h2>
@@ -102,42 +105,24 @@ const store = useSearchStore()
 const results = ref('')
 const audioLink = ref('')
 const hasResults = ref(true)
-const synonyms = ref(null)
-const antonyms = ref(null)
-const example = ref(null)
 
 const loaded = computed(() => {
   return Object(store.searchResponse[0])
 })
 
-watch(loaded, (newVal, oldVal) => {
-  console.log('watch loaded')
-
+watch(loaded, (newVal) => {
   results.value = newVal
 
   hasResults.value = Object.keys(newVal).length > 0
 })
 
 watch(results, (val) => {
-  console.log('watch results val:', val)
-  console.log('watch length:', Object.keys(val).length > 0)
-  // console.log('results watcher:', val)
   if (Object.keys(val).length > 0) {
     val ? (audioLink.value = results.value.phonetics.audio) : null
   }
 })
 
-const handleFiguratives = (arr) => {
-  let output = ''
-  for (let i = 0; i < arr.length; i++) {
-    output += `<a class="synonyms" @click.prevent="handleLink('${arr[i]}')">${arr[i]}</a>`
-  }
-  return output
-}
-
 const handleLink = (word) => {
-  console.log('!!!!!!!', word)
-
   store.searchDictionary(word)
 }
 </script>

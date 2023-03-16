@@ -20,9 +20,14 @@ html {
 html[data-theme="dark"] {
     background-color: $black;
     color: $white;
+
+    .b-fonts__select,
+    .darkgrey2,
+    .darkgrey3 {
+        color: white;
+    }
 }
 
 html[data-theme='dark'] img {
     filter: invert(1) hue-rotate(180deg)
 }
-

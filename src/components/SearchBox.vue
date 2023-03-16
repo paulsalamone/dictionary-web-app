@@ -1,10 +1,11 @@
 <template>
-  <section id="search-box">
+  <section class="b-search">
     <form
       action=""
+      class="b-search__form"
       id="search-form"
       @submit.prevent="handleSubmit()"
-      :class="store.empty || store.invalid ? 'empty-search' : null"
+      :class="store.empty || store.invalid ? 'b-search__form-empty' : null"
       :style="{
         'border-color': `${
           (isHover && store.empty) || store.invalid
@@ -20,20 +21,27 @@
       @mouseleave="() => (isHover = false)"
     >
       <input
+        class="b-search__input"
         type="search"
         placeholder="enter word"
         v-model="word"
         id="search-input"
         name="search-input"
-        @focus="handleFocus1()"
-        @blur="handleBlur1()"
+        @focus="handleFocusBlur('search-form', 'focus')"
+        @blur="handleFocusBlur('search-form', 'blur')"
       />
-      <button type="submit" id="submit-button" @focus="handleFocus2()" @blur="handleBlur2()">
+      <button
+        class="b-search__button"
+        type="submit"
+        id="submit-button"
+        @focus="handleFocusBlur('submit-button', 'focus')"
+        @blur="handleFocusBlur('submit-button', 'blur')"
+      >
         <img src="../assets/images/icon-search.svg" alt="search icon" />
       </button>
     </form>
-    <p v-if="store.empty" class="red">Whoops, can't be empty...</p>
-    <p v-if="store.invalid" class="red">
+    <p v-if="store.empty" class="b-form_response-empty">Whoops, can't be empty...</p>
+    <p v-if="store.invalid" class="b-form_response-invalid">
       Please use letters only, no numbers or special characters...
     </p>
   </section>
@@ -48,59 +56,43 @@ const store = useSearchStore()
 const word = ref('')
 const isHover = ref(false)
 const isFocus = ref(false)
+
 // METHODS
 const handleSubmit = () => {
   const reg = new RegExp('^[a-zA-Z]+$')
   if (word.value === '') {
     handleEmpty()
     word.value = ''
-
     return
   }
 
   if (reg.test(word.value)) {
-    console.log('SEARCH DICT')
     store.searchDictionary(word.value)
   } else {
-    console.log('HANDLE INVAL')
     word.value = ''
     handleInvalid()
   }
   word.value = ''
-  handleBlur1()
-  handleBlur2()
+  handleFocusBlur('search-form', 'blur')
+  handleFocusBlur('submit-button', 'blur')
 }
 
 const handleEmpty = () => {
-  // console.log('EMPTY')
   store.handleEmpty()
 }
 const handleInvalid = () => {
   store.handleInvalid()
 }
 
-const handleFocus1 = () => {
-  // console.log('input focus')
-  const el = document.getElementById('search-form')
-  el.classList.add('form-focus')
-  isFocus.value = true
-}
-const handleBlur1 = () => {
-  // console.log('input blur')
-  const el = document.getElementById('search-form')
-  el.classList.remove('form-focus')
-  isFocus.value = false
-}
-const handleFocus2 = () => {
-  // console.log('button focus')
-  const el = document.getElementById('submit-button')
-  el.classList.add('form-focus')
-  isFocus.value = true
-}
-const handleBlur2 = () => {
-  // console.log('button blur')
-  const el = document.getElementById('submit-button')
-  el.classList.remove('form-focus')
-  isFocus.value = false
+const handleFocusBlur = (id, type) => {
+  const el = document.getElementById(id)
+
+  if (type === 'focus') {
+    el.classList.add('b-search__form-focus')
+    isFocus.value = true
+  } else {
+    el.classList.remove('b-search__form-focus')
+    isFocus.value = false
+  }
 }
 </script>
