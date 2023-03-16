@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper" class="choose-san-serif">
     <header>
-      <img src="./assets/images/logo.svg" alt="dictionary logo" />
+      <img src="./assets/images/logo.svg" alt="dictionary logo" @click="handleReload()" />
       <StyleSelectors :html-el="htmlEl" @set-theme="handleTheme" @set-font="handleFont" />
     </header>
 
@@ -18,15 +18,20 @@ import StyleSelectors from './components/StyleSelectors.vue'
 import DefinitionView from './components/DefinitionView.vue'
 
 import { useSearchStore } from './stores/SearchStore'
-// const store = useSearchStore()
 
 export default {
   name: 'app',
   components: { SearchBox, StyleSelectors, DefinitionView },
   data() {
     return {
-      htmlEl: null
+      htmlEl: null,
+      store: null
     }
+  },
+  created() {
+    this.store = useSearchStore()
+
+    this.store.searchDictionary('keyboard')
   },
   mounted() {
     this.htmlEl = document.getElementsByTagName('html')[0]
@@ -43,9 +48,9 @@ export default {
     } else {
       this.htmlEl.dataset.font = localStorage.getItem('font')
     }
-    const store = useSearchStore()
+    // this.store = useSearchStore()
 
-    store.searchDictionary('dictionary')
+    // this.store.searchDictionary('keyboard')
   },
   methods: {
     handleTheme(theme) {
@@ -56,6 +61,9 @@ export default {
     handleFont(font) {
       localStorage.setItem('font', font)
       this.htmlEl.dataset.font = font
+    },
+    handleReload() {
+      this.store.searchDictionary('keyboard')
     }
   }
 }

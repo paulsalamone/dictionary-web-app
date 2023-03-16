@@ -20,46 +20,153 @@
 }
 
 
-$san-serif:  'Inter-VariableFont_slnt\,wght';
+$san-serif: 'Inter-VariableFont_slnt\,wght';
 $serif: 'Lora-VariableFont_wght.ttf';
 $mono: 'Inconsolata-VariableFont_wdth\,wght';
 
 
 html[data-font="san-serif"] {
     font-family: $san-serif;
+    font-weight: 400;
 }
 
 html[data-font="serif"] {
     font-family: $serif;
+    font-weight: 400;
 }
 
 
 html[data-font="mono"] {
     font-family: $mono;
+    font-weight: 400;
 }
 
-h1 {
+
+
+.heading-l {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    color: $darkgrey3;
+}
+
+.heading-m {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: $purple;
+}
+
+.heading-pos {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: $darkgrey3;
+    font-style: italic;
+}
+
+.heading-s {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: $mediumgrey;
+}
+
+.body-m {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: $darkgrey2;
+
+}
+
+// FONT UTILITIES
+
+.size-64 {
     font-size: 64px;
     line-height: 77px;
 }
 
-h2 {
+.size-24 {
     font-size: 24px;
     line-height: 29px;
 }
 
-
-h3 {
+.size-20 {
     font-size: 20px;
     line-height: 24px;
 }
 
-h4 {
+.size-18 {
     font-size: 18px;
     line-height: 24px;
 }
 
-p {
-    font-size: 14px;
-    line-height: 17px;
+.size-16 {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.lightergrey {
+    color: #F4f4f4;
+}
+
+.lightgrey {
+    color: #e9e9e9;
+}
+
+.mediumgrey {
+    color: #757575;
+}
+
+.darkgrey1 {
+    color: #3a3a3a;
+}
+
+.darkgrey2 {
+    color: #2d2d2d;
+}
+
+.darkgrey3 {
+    color: #1f1f1f;
+}
+
+.black {
+    color: #050505;
+}
+
+.purple {
+    color: $purple;
+}
+
+.red {
+    color: $red;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.ml-2 {
+    margin-left: 2rem;
+}
+
+.ml-2a {
+    margin-left: 2.4rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
 }

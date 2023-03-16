@@ -141,7 +141,7 @@ header {
   margin: 1rem 0 2rem 0;
 
   .empty-search {
-    border: 3px solid $red;
+    border: 2px solid $red;
   }
 
 
@@ -151,8 +151,11 @@ header {
     display: flex;
     justify-content: space-between;
     background-color: $lightergrey;
-    border-radius: 7px;
+    border-radius: 16px;
     padding: 1rem;
+    border: 2px solid white;
+    transition: border-color 300ms;
+    box-sizing: border-box;
 
     input[type="search"] {
       background-color: $lightergrey;
@@ -191,7 +194,14 @@ header {
     }
   }
 
+  .form-focus {
+    border: 3px solid $purple;
+    box-shadow: 0 0 3px #a445ed54;
+    ;
+  }
 }
+
+
 
 #definition-view {
 
@@ -205,14 +215,61 @@ header {
     }
   }
 
-  .pos {
+  .pos-block {
     font-weight: 700;
     font-style: italic;
+    display: flex;
+    place-items: center center;
+
+    * {
+      // border: 1px dotted red;
+    }
+
+
+    .heading-pos {
+      display: inline-block;
+      width: fit-content;
+      margin: 0;
+      margin-right: 1rem;
+      margin-top: 2.25rem;
+    }
+
+    .pos-line {
+      display: inline-block;
+      border-top: 2px solid $lightgrey;
+      width: 100%;
+      margin-top: 2.25rem;
+    }
+
+    .example {
+      color: $mediumgrey
+    }
+
   }
 
-  .meaning {
-    color: $mediumgrey;
+  .definition-bullet::marker {
+    color: $purple;
   }
 
+
+  .synonyms {
+    color: $purple;
+    margin-left: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .synonyms:hover {
+    text-decoration: underline;
+  }
+
+
+  .source {
+    border-top: 1px solid $mediumgrey;
+    width: 100%;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    margin-bottom: 3rem;
+  }
 
 }

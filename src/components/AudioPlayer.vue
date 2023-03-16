@@ -1,23 +1,15 @@
 <template>
-  <div>
-    <!-- <p>{{ phonetics2 }}</p> -->
-    <div v-for="(phonetic, index) in phonetics" :key="index">
-      <div v-if="phonetic.audio">
-        <img
-          src="../assets/images/icon-play.svg"
-          alt=""
-          :key="phonetic.audio"
-          @click="handlePlay"
-        />
-        <audio :key="phonetic.audio" id="audio-player">
-          <source :src="phonetic.audio ?? phonetis.audio" type="audio/mp3" />
-        </audio>
-      </div>
-    </div>
+  <div v-if="showAudio">
+    <img src="../assets/images/icon-play.svg" alt="" :key="audioFile" @click="handlePlay" />
+    <audio :key="audioFile" id="audio-player">
+      <source :src="audioFile ?? audioFile" type="audio/mp3" />
+    </audio>
   </div>
 </template>
 
 <script>
+import { useSearchStore } from '../stores/SearchStore'
+
 export default {
   name: 'audio-player',
   props: {
@@ -25,42 +17,42 @@ export default {
       type: Object
     }
   },
-  computed: {
-    // phonetics2() {
-    //   const arr = Array.from(this.phonetics)
-    //   //   const answer = arr.find((e) => {
-    //   //     e.audio !== ''
-    //   //     return answer
-    //   //   })
-    //   return arr
-    // }
-    // audioPlayer() {
-    //   console.log('Array.from(this.phonetics)', Array.from(this.phonetics))
-    //   const arr = Array.from(this.phonetics)
-    //   //   console.log(arr)
-    //   const bob = arr.filter((e) => e.audio.length > 0)
-    //   console.log('bob', bob)
-    //   return bob
-    //   //   return Array.from(this.phonetics).find((e) => e.audio.length > 0)
-    // }
+  data() {
+    return {
+      store: null,
+      audioFile: null,
+      showAudio: true
+    }
   },
-  //   watch: {
-  //     audioPlayer(val) {
-  //       console.log('AP ', val)
-  //     }
-  //   },
+  watch: {
+    phonetics() {
+      this.audioFile = ''
+      const phoneticsArray = JSON.parse(JSON.stringify(this.phonetics))
+      //   console.log(phoneticsArray)
+
+      this.firstAudioFile = phoneticsArray.filter((e) => e.audio.length > 0)
+
+      // console.log('this.audioFile', this.firstAudioFile.length)
+
+      if (this.firstAudioFile.length > 0) {
+        this.audioFile = this.firstAudioFile[0].audio
+        // console.log('this.audioFile', this.audioFile)
+        this.showAudio = true
+      } else {
+        this.audioFile = ''
+        this.showAudio = false
+      }
+    }
+  },
   mounted() {
-    // console.log('MOUNTED', this.audioPlayer)
+    // console.log('MOUNTED')
+    this.store = useSearchStore()
+    // why the hell is this here?
+    // this.store.searchDictionary('dictionary')
   },
-  //   watch: {
-  //     audioPlayer(val) {
-  //       console.log('audioPlayer val', val)
-  //     }
-  //   },
 
   methods: {
     handlePlay() {
-      //   console.log('handle play')
       document.getElementById('audio-player').play()
     }
   }
