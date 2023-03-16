@@ -1,5 +1,5 @@
 <template>
-  <div class="b-style-selectors choose-san-serif">
+  <div class="b-style-selectors">
     <div class="b-fonts">
       <select class="b-fonts__select" v-model="currentFont">
         <option value="san-serif">Sans Serif</option>

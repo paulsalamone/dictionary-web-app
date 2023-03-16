@@ -21,10 +21,20 @@ html[data-theme="dark"] {
     background-color: $black;
     color: $white;
 
-    .b-fonts__select,
-    .darkgrey2,
-    .darkgrey3 {
+    .b-fonts__select {
         color: white;
+    }
+
+    .b-definitions {
+
+        &__word,
+        &__pos-heading,
+        &__bullet {
+            color: white;
+        }
+
+
+
     }
 }
 

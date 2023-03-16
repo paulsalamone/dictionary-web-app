@@ -9,8 +9,8 @@
       <!-- HEADER -->
       <div class="b-definitions__header">
         <div class="b-definitions__top">
-          <h1 class="size-64 bold darkgrey3">{{ results.word }}</h1>
-          <h4 class="size-24 purple">{{ results.phonetic }}</h4>
+          <h1 class="b-definitions__word">{{ results.word }}</h1>
+          <h4 class="b-definitions__phonetic">{{ results.phonetic }}</h4>
         </div>
         <AudioPlayer v-if="audioLink !== ''" :phonetics="results.phonetics" />
       </div>
@@ -19,19 +19,19 @@
       <div v-for="(meaning, index) in results.meanings" :key="index">
         <!-- POS -->
         <div class="b-definitions__pos">
-          <h2 class="italic size-24 darkgrey3 b-definitions__pos-heading">
+          <h2 class="b-definitions__pos-heading">
             {{ meaning.partOfSpeech }}
           </h2>
           <div class="b-definitions__pos-line"></div>
         </div>
 
         <!-- "MEANING" -->
-        <h2 class="mediumgrey size-20 mt-2">Meaning</h2>
+        <h2 class="b-definitions__meaning">Meaning</h2>
 
         <!-- DEFINITIONS -->
         <div v-for="(definition, index) in meaning.definitions" :key="index">
           <ul>
-            <li class="b-definitions__bullet darkgrey2 size-18">
+            <li class="b-definitions__bullet">
               {{ definition.definition }}
             </li>
           </ul>
@@ -40,35 +40,35 @@
 
           <!-- SYNONYMS -->
           <p
-            class="mediumgrey size-20 mt-2"
+            class="b-definitions__synonyms"
             v-if="definition.synonyms && definition.synonyms.length > 0"
           >
             Synonyms
             <span
               v-for="(synonym, index) in definition.synonyms"
               :key="index"
-              class="synonyms"
+              class="b-definitions__synonyms-span"
               @click.prevent="handleLink(synonym)"
               >{{ synonym }}</span
             >
           </p>
           <!-- ANTONYMS -->
           <p
-            class="mediumgrey size-20 mt-2"
+            class="b-definitions__synonyms"
             v-if="definition.antonyms && definition.antonyms.length > 0"
           >
-            Synonyms
+            Antonyms
             <span
               v-for="(antonym, index) in definition.antonyms"
               :key="index"
-              class="b-definitions__synonyms"
+              class="b-definitions__synonyms-span"
               @click.prevent="handleLink(antonym)"
               >{{ antonym }}</span
             >
           </p>
           <!-- EXAMPLES -->
           <p
-            class="mediumgrey size-18 mt-1 ml-2a mb-2"
+            class="b-definitions__examples"
             v-if="definition.example && definition.example.length > 0"
           >
             "{{ definition.example }}"
@@ -77,7 +77,7 @@
       </div>
       <!-- <hr /> -->
       <div class="b-definitions__source">
-        <a :href="results.sourceUrls" class="size-16 mediumgrey mt-2">{{
+        <a :href="results.sourceUrls" class="b-definitions__source-url">{{
           results.sourceUrls[0]
         }}</a>
       </div>
