@@ -7,15 +7,8 @@
       @submit.prevent="handleSubmit()"
       :class="store.empty || store.invalid ? 'b-search__form-empty' : null"
       :style="{
-        'border-color': `${
-          (isHover && store.empty) || store.invalid
-            ? 'red'
-            : isHover && !store.empty && !store.invalid
-            ? '#A445ed'
-            : isFocus && !store.empty && !store.invalid
-            ? '#A445ed'
-            : 'white'
-        }`
+        'border-color': `${borderStyle}`,
+        'box-shadow': `${shadowStyle}`
       }"
       @mouseover="() => (isHover = true)"
       @mouseleave="() => (isHover = false)"
@@ -27,17 +20,33 @@
         v-model="word"
         id="search-input"
         name="search-input"
-        @focus="handleFocusBlur('search-form', 'focus')"
-        @blur="handleFocusBlur('search-form', 'blur')"
+        autocomplete="off"
+        @focus="handleFocusBlur('focus')"
+        @blur="handleFocusBlur('blur')"
       />
       <button
         class="b-search__button"
         type="submit"
         id="submit-button"
-        @focus="handleFocusBlur('submit-button', 'focus')"
-        @blur="handleFocusBlur('submit-button', 'blur')"
+        @focus="handleFocusBlur('focus')"
+        @blur="handleFocusBlur('blur')"
       >
-        <img src="../assets/images/icon-search.svg" alt="search icon" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          alt="search icon"
+        >
+          <path
+            fill="none"
+            :stroke="store.invalid || store.empty ? '#dd5252' : '#A445ed'"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"
+          />
+        </svg>
       </button>
     </form>
     <p v-if="store.empty" class="b-form_response-empty">Whoops, can't be empty...</p>
@@ -48,51 +57,51 @@
 </template>
 
 <script setup >
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useSearchStore } from '../stores/SearchStore'
 const store = useSearchStore()
 
-// DATA
+// WORD SUBMISSION
 const word = ref('')
-const isHover = ref(false)
-const isFocus = ref(false)
 
-// METHODS
 const handleSubmit = () => {
   const reg = new RegExp('^[a-zA-Z]+$')
   if (word.value === '') {
-    handleEmpty()
+    store.handleEmpty()
     word.value = ''
     return
   }
-
   if (reg.test(word.value)) {
     store.searchDictionary(word.value)
   } else {
     word.value = ''
-    handleInvalid()
+    store.handleInvalid()
   }
   word.value = ''
-  handleFocusBlur('search-form', 'blur')
-  handleFocusBlur('submit-button', 'blur')
 }
 
-const handleEmpty = () => {
-  store.handleEmpty()
-}
-const handleInvalid = () => {
-  store.handleInvalid()
-}
+// INPUT STYLING
+const isHover = ref(false)
+const isFocus = ref(false)
 
-const handleFocusBlur = (id, type) => {
-  const el = document.getElementById(id)
-
-  if (type === 'focus') {
-    el.classList.add('b-search__form-focus')
-    isFocus.value = true
-  } else {
-    el.classList.remove('b-search__form-focus')
-    isFocus.value = false
-  }
+const borderStyle = computed(() => {
+  return (isHover.value && store.empty) || store.invalid
+    ? '#dd5252'
+    : isHover.value && !store.empty && !store.invalid
+    ? '#A445ed'
+    : isFocus.value && !store.empty && !store.invalid
+    ? '#A445ed'
+    : 'transparent'
+})
+const shadowStyle = computed(() => {
+  return isFocus.value && !store.empty && !store.invalid
+    ? '0 0 7px #a445ed7c'
+    : isFocus.value && (store.empty || store.invalid)
+    ? '0 0 7px #dd525293'
+    : '0 0 0'
+})
+const handleFocusBlur = (type) => {
+  console.log('handle ', type)
+  type === 'focus' ? (isFocus.value = true) : (isFocus.value = false)
 }
 </script>

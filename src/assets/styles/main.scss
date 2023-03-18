@@ -19,7 +19,6 @@
   max-width: 750px;
 }
 
-
 .b-header {
   display: flex;
   width: 100%;
@@ -86,7 +85,7 @@
       height: 14px;
       width: 14px;
       border-radius: 7px;
-      transition: right 500ms;
+      transition: right 300ms;
 
       &-light {
         right: 1px;
@@ -111,8 +110,9 @@
     background-color: $lightergrey;
     border-radius: 16px;
     padding: 1rem;
-    border: 2px solid white;
-    transition: border-color 300ms;
+    border-width: 2px;
+    border-style: solid;
+    transition: border-color 200ms, box-shadow 200ms;
     box-sizing: border-box;
 
     input[type="search"] {
@@ -156,11 +156,6 @@
     border: 2px solid $red;
   }
 
-  .b-search__form-focus {
-    border: 3px solid $purple;
-    box-shadow: 0 0 3px #a445ed54;
-    ;
-  }
 }
 
 

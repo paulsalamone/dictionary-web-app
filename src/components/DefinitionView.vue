@@ -83,6 +83,7 @@
       </div>
     </div>
     <!-- NO DEFINITIONS -->
+
     <div v-if="!hasResults && !store.empty && !store.invalid" class="b-definitions__none">
       <img src="../assets/images/" alt="" />
       <h1>🙁</h1>

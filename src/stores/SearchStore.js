@@ -12,15 +12,17 @@ export const useSearchStore = defineStore({
     actions: {
         handleEmpty() {
             this.empty = true;
+            this.invalid = false;
             this.searchResponse = {}
         },
         handleInvalid() {
+            this.empty = false;
             this.invalid = true;
+            this.searchResponse = {}
+
         },
         async searchDictionary(word) {
-            console.log('store dict')
             this.empty = false;
-            this.invalid = false
 
             try {
                 console.log('store try')
@@ -40,6 +42,7 @@ export const useSearchStore = defineStore({
             }
 
             this.searchString = word;
+            this.invalid = false
 
         }
     }
