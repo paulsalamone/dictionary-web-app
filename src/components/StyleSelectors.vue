@@ -1,17 +1,15 @@
 <template>
-  <div id="style-selectors">
-    <!-- FONTS -->
-    <div id="fonts">
-      <select v-model="currentFont" id="font-selector">
+  <div class="b-style-selectors">
+    <div class="b-fonts">
+      <select class="b-fonts__select" v-model="currentFont">
         <option value="san-serif">Sans Serif</option>
         <option value="serif">Serif</option>
         <option value="mono">Mono</option>
       </select>
     </div>
-    <div id="colors">
-      <!-- COLORS -->
-      <div :class="`toggler toggler-${currentTheme}`" @click="toggleTheme()">
-        <div :class="`knob knob-${currentTheme}`"></div>
+    <div class="b-colors">
+      <div :class="`b-colors__toggler b-colors__toggler-${currentTheme}`" @click="toggleTheme()">
+        <div :class="`b-colors__knob b-colors__knob-${currentTheme}`"></div>
       </div>
       <img src="../assets/images/icon-moon.svg" alt="moon" />
     </div>
@@ -25,14 +23,8 @@ export default {
     return {
       currentFont: null,
       currentTheme: null
-      //   togglerStyle: null
     }
   },
-  //   computed: {
-  //     currentTheme() {
-  //       return localStorage.getItem('theme')
-  //     }
-  //   },
   mounted() {
     this.currentFont = localStorage.getItem('font')
 
@@ -46,9 +38,6 @@ export default {
     currentFont(val) {
       this.$emit('setFont', val)
     }
-    // togglerStyle(val) {
-    //   console.log(' WATCH toggler style', val)
-    // }
   },
   methods: {
     toggleTheme() {
