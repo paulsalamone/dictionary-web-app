@@ -5,11 +5,8 @@
       class="b-search__form"
       id="search-form"
       @submit.prevent="handleSubmit()"
-      :class="store.empty || store.invalid ? 'b-search__form-empty' : null"
-      :style="{
-        'border-color': `${borderStyle}`,
-        'box-shadow': `${shadowStyle}`
-      }"
+      :class="formClass"
+      :style="formStyle"
       @mouseover="() => (isHover = true)"
       @mouseleave="() => (isHover = false)"
     >
@@ -84,22 +81,28 @@ const handleSubmit = () => {
 const isHover = ref(false)
 const isFocus = ref(false)
 
-const borderStyle = computed(() => {
-  return (isHover.value && store.empty) || store.invalid
-    ? '#dd5252'
-    : isHover.value && !store.empty && !store.invalid
-    ? '#A445ed'
-    : isFocus.value && !store.empty && !store.invalid
-    ? '#A445ed'
-    : 'transparent'
+const formClass = computed(() => {
+  return store.empty || store.invalid ? 'b-search__form-empty' : null
 })
-const shadowStyle = computed(() => {
-  return isFocus.value && !store.empty && !store.invalid
-    ? '0 0 7px #a445ed7c'
-    : isFocus.value && (store.empty || store.invalid)
-    ? '0 0 7px #dd525293'
-    : '0 0 0'
+
+const formStyle = computed(() => {
+  const border =
+    isHover.value && (store.empty || store.invalid)
+      ? '#dd5252'
+      : isHover.value && !store.empty && !store.invalid
+      ? '#A445ed'
+      : 'transparent'
+
+  const shadow =
+    isFocus.value && !store.empty && !store.invalid
+      ? '0 0 7px #a445ed7c'
+      : isFocus.value && (store.empty || store.invalid)
+      ? '0 0 7px #dd525293'
+      : '0 0 0'
+
+  return `border-color: ${border}; box-shadow: ${shadow}`
 })
+
 const handleFocusBlur = (type) => {
   console.log('handle ', type)
   type === 'focus' ? (isFocus.value = true) : (isFocus.value = false)
