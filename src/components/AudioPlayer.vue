@@ -9,7 +9,7 @@
 
 <script setup>
 import { useSearchStore } from '../stores/SearchStore'
-import { ref, watch, onMounted, defineProps } from 'Vue'
+import { ref, watch, onMounted } from 'vue'
 
 const props = defineProps({ phonetics: Object })
 

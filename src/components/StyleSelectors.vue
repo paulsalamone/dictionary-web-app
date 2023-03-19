@@ -20,46 +20,29 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import FontSelector from './FontSelector.vue'
+import { ref, computed, onMounted } from 'vue'
+import { useSearchStore } from '../stores/SearchStore'
 
-export default {
-  name: 'style-selectors',
-  components: { FontSelector },
-  data() {
-    return {
-      currentFont: null,
-      currentTheme: null,
-      store: null
-    }
-  },
+const store = useSearchStore()
 
-  mounted() {
-    this.currentFont = localStorage.getItem('font')
+// THEME STUFF
+const currentTheme = ref(null)
 
-    this.currentTheme = localStorage.getItem('theme')
+const strokeColor = computed(() => {
+  return currentTheme.value === 'light' ? '#838383' : '#A445ed'
+})
 
-    this.currentTheme === 'light'
-      ? (this.togglerStyle = 'toggler-light')
-      : (this.togglerStyle = 'toggler-dark')
-  },
-  computed: {
-    strokeColor() {
-      return this.currentTheme === 'light' ? '#838383' : '#A445ed'
-    }
-  },
-  methods: {
-    toggleTheme() {
-      this.currentTheme === 'dark' ? (this.currentTheme = 'light') : (this.currentTheme = 'dark')
+onMounted(() => {
+  currentTheme.value = localStorage.getItem('theme')
+  console.log('mounted currentTheme: ', currentTheme.value)
+})
 
-      localStorage.setItem('theme', this.currentTheme)
+const toggleTheme = () => {
+  currentTheme.value === 'light' ? (currentTheme.value = 'dark') : (currentTheme.value = 'light')
 
-      this.$emit('setTheme', this.currentTheme)
-    },
-    selectFont(value) {
-      this.$emit('setFont', value)
-    }
-  }
+  store.setTheme(currentTheme.value)
 }
 </script>
 

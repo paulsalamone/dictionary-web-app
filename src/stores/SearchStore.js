@@ -7,7 +7,8 @@ export const useSearchStore = defineStore({
         searchResponse: {},
         empty: false,
         invalid: false,
-        font: null
+        font: null,
+        theme: null
     }),
 
     actions: {
@@ -25,7 +26,11 @@ export const useSearchStore = defineStore({
             this.htmlEl = document.getElementsByTagName('html')[0]
             localStorage.setItem('font', font)
             this.htmlEl.dataset.font = font;
-
+        },
+        setTheme(theme) {
+            this.htmlEl = document.getElementsByTagName('html')[0]
+            localStorage.setItem('theme', theme)
+            this.htmlEl.dataset.theme = theme;
         },
         async searchDictionary(word) {
             this.empty = false;
