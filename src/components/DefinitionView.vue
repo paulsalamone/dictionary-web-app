@@ -76,7 +76,7 @@
       <!-- <hr /> -->
       <p class="b-definitions__source">
         Source:
-        <a :href="results.sourceUrls" class="b-definitions__source-url">{{
+        <a :href="results.sourceUrls" class="b-definitions__source-url" target="blank">{{
           results.sourceUrls[0]
         }}</a
         ><img src="../assets/images/icon-new-window.svg" alt="" />
