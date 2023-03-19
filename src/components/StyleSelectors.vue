@@ -1,30 +1,39 @@
 <template>
   <div class="b-style-selectors">
-    <div class="b-fonts">
-      <select class="b-fonts__select" v-model="currentFont">
-        <option value="san-serif">Sans Serif</option>
-        <option value="serif">Serif</option>
-        <option value="mono">Mono</option>
-      </select>
-    </div>
+    <FontSelector />
     <div class="b-colors">
       <div :class="`b-colors__toggler b-colors__toggler-${currentTheme}`" @click="toggleTheme()">
         <div :class="`b-colors__knob b-colors__knob-${currentTheme}`"></div>
       </div>
-      <img src="../assets/images/icon-moon.svg" alt="moon" />
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+        <path
+          fill="none"
+          :stroke="strokeColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"
+        />
+      </svg>
     </div>
   </div>
 </template>
 
 <script>
+import FontSelector from './FontSelector.vue'
+
 export default {
   name: 'style-selectors',
+  components: { FontSelector },
   data() {
     return {
       currentFont: null,
-      currentTheme: null
+      currentTheme: null,
+      store: null
     }
   },
+
   mounted() {
     this.currentFont = localStorage.getItem('font')
 
@@ -34,16 +43,15 @@ export default {
       ? (this.togglerStyle = 'toggler-light')
       : (this.togglerStyle = 'toggler-dark')
   },
-  watch: {
-    currentFont(val) {
-      this.$emit('setFont', val)
+  computed: {
+    strokeColor() {
+      return this.currentTheme === 'light' ? '#838383' : '#A445ed'
     }
   },
   methods: {
     toggleTheme() {
       this.currentTheme === 'dark' ? (this.currentTheme = 'light') : (this.currentTheme = 'dark')
 
-      console.log('UHHH', this.currentTheme)
       localStorage.setItem('theme', this.currentTheme)
 
       this.$emit('setTheme', this.currentTheme)

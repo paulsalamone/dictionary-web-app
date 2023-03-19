@@ -30,7 +30,6 @@ export default {
   },
   created() {
     this.store = useSearchStore()
-
     this.store.searchDictionary('keyboard')
   },
   mounted() {
@@ -48,9 +47,6 @@ export default {
     } else {
       this.htmlEl.dataset.font = localStorage.getItem('font')
     }
-    // this.store = useSearchStore()
-
-    // this.store.searchDictionary('keyboard')
   },
   methods: {
     handleTheme(theme) {
