@@ -11,7 +11,7 @@
       @mouseleave="() => (isHover = false)"
     >
       <input
-        class="b-search__input"
+        class="b-search__form-input"
         type="search"
         placeholder="enter word"
         v-model="word"
@@ -22,7 +22,7 @@
         @blur="handleFocusBlur('blur')"
       />
       <button
-        class="b-search__button"
+        class="b-search__form-button"
         type="submit"
         id="submit-button"
         @focus="handleFocusBlur('focus')"
@@ -104,7 +104,6 @@ const formStyle = computed(() => {
 })
 
 const handleFocusBlur = (type) => {
-  console.log('handle ', type)
   type === 'focus' ? (isFocus.value = true) : (isFocus.value = false)
 }
 </script>

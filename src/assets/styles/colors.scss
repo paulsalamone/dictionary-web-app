@@ -25,6 +25,29 @@ html[data-theme="dark"] {
         color: white;
     }
 
+    .b-font-selector__expanded {
+        background-color: $darkgrey3;
+        box-shadow: 0 0 10px $purple;
+    }
+
+    .b-search {
+        &__form {
+            background-color: $darkgrey3;
+
+            input[type="search"] {
+                background-color: $darkgrey3;
+                color: white;
+            }
+
+            button[type="submit"] {
+
+                background-color: $darkgrey3;
+            }
+        }
+
+
+    }
+
     .b-definitions {
 
         &__word,
@@ -32,9 +55,6 @@ html[data-theme="dark"] {
         &__bullet {
             color: white;
         }
-
-
-
     }
 }
 
