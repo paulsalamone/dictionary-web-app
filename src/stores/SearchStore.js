@@ -31,7 +31,6 @@ export const useSearchStore = defineStore({
             this.empty = false;
 
             try {
-                console.log('store try')
                 const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
                 if (response.status === 404) {
                     console.log("404!!!!!!!!")
