@@ -14,7 +14,7 @@ $red: #dd5252;
 // https://livecodestream.dev/post/a-better-approach-to-dark-mode-on-your-website/
 
 html {
-    transition: color 300ms, background-color 300ms;
+    transition: color 200ms, background-color 200ms;
 }
 
 html[data-theme="dark"] {
@@ -44,8 +44,6 @@ html[data-theme="dark"] {
                 background-color: $darkgrey3;
             }
         }
-
-
     }
 
     .b-definitions {
@@ -55,7 +53,13 @@ html[data-theme="dark"] {
         &__bullet {
             color: white;
         }
+
+        &__pos-line {
+            border-color: $darkgrey2
+        }
     }
+
+
 }
 
 html[data-theme='dark'] img {

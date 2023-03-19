@@ -36,8 +36,6 @@
             </li>
           </ul>
 
-          <!-- EXTRAS -->
-
           <!-- SYNONYMS -->
           <p
             class="b-definitions__synonyms"
@@ -76,11 +74,13 @@
         </div>
       </div>
       <!-- <hr /> -->
-      <div class="b-definitions__source">
+      <p class="b-definitions__source">
+        Source:
         <a :href="results.sourceUrls" class="b-definitions__source-url">{{
           results.sourceUrls[0]
-        }}</a>
-      </div>
+        }}</a
+        ><img src="../assets/images/icon-new-window.svg" alt="" />
+      </p>
     </div>
     <!-- NO DEFINITIONS -->
 

@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, computed } from 'Vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { useSearchStore } from '../stores/SearchStore'
 
 const store = useSearchStore()

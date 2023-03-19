@@ -7,50 +7,42 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { useSearchStore } from '../stores/SearchStore'
+import { ref, watch, onMounted } from 'vue'
 
-export default {
-  name: 'audio-player',
-  props: {
-    phonetics: {
-      type: Object
-    }
-  },
-  data() {
-    return {
-      store: null,
-      audioFile: null,
-      showAudio: true
-    }
-  },
-  watch: {
-    phonetics() {
-      this.audioFile = ''
-      const phoneticsArray = JSON.parse(JSON.stringify(this.phonetics))
+const props = defineProps({ phonetics: Object })
 
-      this.firstAudioFile = phoneticsArray.filter((e) => e.audio.length > 0)
+const audioFile = ref(null)
+const firstAudioFile = ref(null)
+const showAudio = ref(true)
 
-      if (this.firstAudioFile.length > 0) {
-        this.audioFile = this.firstAudioFile[0].audio
-        this.showAudio = true
-      } else {
-        this.audioFile = ''
-        this.showAudio = false
-      }
-    }
-  },
-  mounted() {
-    this.store = useSearchStore()
-  },
+onMounted(() => {
+  getAudioFile()
+})
 
-  methods: {
-    handlePlay() {
-      document.getElementById('audio-player').play()
-    }
+watch(
+  () => props.phonetics,
+  () => {
+    getAudioFile()
+  }
+)
+
+const handlePlay = () => {
+  document.getElementById('audio-player').play()
+}
+
+const getAudioFile = () => {
+  const phoneticsArray = JSON.parse(JSON.stringify(props.phonetics))
+  firstAudioFile.value = phoneticsArray.filter((e) => e.audio.length > 0)
+  if (firstAudioFile.value.length > 0) {
+    audioFile.value = firstAudioFile.value[0].audio
+    showAudio.value = true
+  } else {
+    audioFile.value = ''
+    showAudio.value = false
   }
 }
 </script>
 
-<style>
-</style>
+
