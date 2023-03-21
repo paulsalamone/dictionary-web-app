@@ -1,12 +1,13 @@
 <template>
   <div class="b-font-selector">
+    <p>{{ currentFont }} • {{ currentFontBold }}</p>
     <div v-if="!expanded" class="b-font-selector__collapsed" @click="handleExpand">
       {{ currentFontName }}
       <img src="../assets/images/icon-arrow-down.svg" alt="arrow pointing down" />
     </div>
     <div v-else class="b-font-selector__expanded">
       <ul>
-        <li class="san-serif" @click="handleSelect('san-serif')">Sans Serif</li>
+        <li class="san-serif-bold" @click="handleSelect('san-serif')">Sans Serif</li>
         <li class="serif" @click="handleSelect('serif')">Serif</li>
         <li class="mono" @click="handleSelect('mono')">Mono</li>
       </ul>
@@ -29,6 +30,7 @@ const handleExpand = () => {
 
 // FONT STUFF
 const currentFont = ref(null)
+const currentFontBold = ref(null)
 
 const currentFontName = computed(() => {
   return currentFont.value === 'san-serif'
@@ -39,17 +41,28 @@ const currentFontName = computed(() => {
 })
 onMounted(() => {
   currentFont.value = localStorage.getItem('font')
+  currentFontBold.value = localStorage.getItem('font-bold')
+  console.log('fs mounted with', currentFont.value, currentFontBold.value)
 })
 
 watch(currentFont, (val) => {
+  console.log('watch font', val)
   store.setFont(val)
 })
 
+watch(currentFontBold, (val) => {
+  console.log('watch font bold', val)
+
+  store.setFontBold(val)
+})
+
 const handleSelect = (font) => {
-  console.log(font)
   expanded.value = false
   store.setFont(font)
   currentFont.value = font
+
+  store.setFontBold(`${font}-bold`)
+  currentFontBold.value = `${font}-bold`
 }
 </script>
 

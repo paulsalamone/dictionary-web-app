@@ -1,5 +1,8 @@
 <template>
   <div class="b-wrapper">
+    <h2 class="san-serif-bold">dictionary</h2>
+    <p class="serif-bold">fsdfsjdkjsfkj</p>
+    <p class="mono-bold">sfkdfslkkjldfs</p>
     <header class="b-header">
       <img
         src="./assets/images/logo.svg"
@@ -40,8 +43,11 @@ onMounted(() => {
   if (localStorage.getItem('font') === null) {
     localStorage.setItem('font', 'san-serif')
     htmlEl.value.dataset.font = 'san-serif'
+    localStorage.setItem('fontBold', 'san-serif-bold')
+    htmlEl.value.dataset.fontBold = 'san-serif-bold'
   } else {
     htmlEl.value.dataset.font = localStorage.getItem('font')
+    htmlEl.value.dataset.fontBold = localStorage.getItem('font-bold')
   }
 })
 

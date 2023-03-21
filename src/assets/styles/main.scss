@@ -37,16 +37,6 @@
 .b-style-selectors {
   @include flex-row;
 
-  .b-fonts2 {
-    color: orange;
-
-    &__select {
-      display: flex;
-      flex-direction: column;
-
-      &-option {}
-    }
-  }
 
   .b-fonts {
     @include flex-row;

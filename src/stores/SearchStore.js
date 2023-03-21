@@ -8,6 +8,7 @@ export const useSearchStore = defineStore({
         empty: false,
         invalid: false,
         font: null,
+        fontBold: null,
         theme: null
     }),
 
@@ -26,6 +27,11 @@ export const useSearchStore = defineStore({
             this.htmlEl = document.getElementsByTagName('html')[0]
             localStorage.setItem('font', font)
             this.htmlEl.dataset.font = font;
+        },
+        setFontBold(font) {
+            this.htmlEl = document.getElementsByTagName('html')[0]
+            localStorage.setItem('fontBold', font)
+            this.htmlEl.dataset.fontBold = font;
         },
         setTheme(theme) {
             this.htmlEl = document.getElementsByTagName('html')[0]

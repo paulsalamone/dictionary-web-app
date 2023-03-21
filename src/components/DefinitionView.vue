@@ -9,7 +9,9 @@
       <!-- HEADER -->
       <div class="b-definitions__header">
         <div class="b-definitions__top">
-          <h1 class="b-definitions__word">{{ results.word }}</h1>
+          <h1 class="b-definitions__word">
+            <b> {{ results.word }}</b>
+          </h1>
           <h4 class="b-definitions__phonetic">{{ results.phonetic }}</h4>
         </div>
         <AudioPlayer v-if="audioLink !== ''" :phonetics="results.phonetics" />
