@@ -1,6 +1,8 @@
 @import './colors.scss', './fonts.scss', './layout.scss';
 
 
+$small: 480px;
+
 @mixin flex-row {
   display: flex;
   justify-content: space-between;
@@ -12,11 +14,22 @@
   display: flex;
   justify-content: center;
   padding: 1rem;
+
+  @media screen and (max-width: $small) {
+    padding: .25rem;
+  }
+
+
 }
 
 .b-wrapper {
   width: 80%;
   max-width: 750px;
+
+  @media screen and (max-width: $small) {
+    width: 90%;
+  }
+
 }
 
 .b-header {
@@ -234,9 +247,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-
-
   }
 
   &__top * {
@@ -248,12 +258,23 @@
     line-height: 77px;
     font-weight: 900;
     color: $darkgrey3;
+
+    @media screen and (max-width: $small) {
+      font-size: 32px;
+      line-height: 40px;
+    }
+
   }
 
   &__phonetic {
     font-size: 24px;
     line-height: 29px;
     color: $purple;
+
+    @media screen and (max-width: $small) {
+      font-size: 18px;
+    }
+
   }
 
   &__pos {
@@ -272,6 +293,12 @@
       font-size: 24px;
       line-height: 29px;
       color: $darkgrey3;
+
+
+      @media screen and (max-width: $small) {
+        font-size: 18px;
+      }
+
     }
 
     &-line {
@@ -289,12 +316,21 @@
     color: $mediumgrey;
     margin-top: 2.25rem;
     margin-bottom: 1.25rem;
+
+    @media screen and (max-width: $small) {
+      font-size: 16px;
+    }
   }
 
   &__bullet {
     color: $darkgrey2;
     font-size: 18px;
     line-height: 24px;
+
+    @media screen and (max-width: $small) {
+      font-size: 16px;
+      line-height: 21px;
+    }
   }
 
   &__bullet::marker {
@@ -309,6 +345,10 @@
     font-size: 20px;
     line-height: 24px;
     margin-top: 2rem;
+
+    @media screen and (max-width: $small) {
+      font-size: 16px;
+    }
 
     &-span {
       margin-left: 1rem;
@@ -371,16 +411,30 @@
   position: relative;
   transform: translateX(-80px);
 
+  @media screen and (max-width: $small) {
+    transform: translate(-50px, -25px);
+  }
+
   &-circle {
     background-color: white;
     clip-path: circle(47%);
     width: 75px;
     height: 75px;
     position: absolute;
+
+    @media screen and (max-width: $small) {
+      width: 50px;
+      height: 50px;
+    }
+
   }
 
   img {
     position: absolute;
 
+    @media screen and (max-width: $small) {
+      width: 50px;
+      height: 50px;
+    }
   }
 }

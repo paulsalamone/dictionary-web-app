@@ -9,7 +9,7 @@
       <!-- HEADER -->
       <div class="b-definitions__header">
         <div class="b-definitions__top">
-          <h1 class="b-definitions__word">
+          <h1 :class="`b-definitions__word ${store.fontBold}`">
             <b> {{ results.word }}</b>
           </h1>
           <h4 class="b-definitions__phonetic">{{ results.phonetic }}</h4>
