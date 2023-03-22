@@ -20,7 +20,7 @@
       <!-- MEANINGS -->
       <div v-for="(meaning, index) in results.meanings" :key="index">
         <!-- POS -->
-        <div class="b-definitions__pos">
+        <div :class="`b-definitions__pos ${store.fontBold}`">
           <h2 class="b-definitions__pos-heading">
             {{ meaning.partOfSpeech }}
           </h2>
@@ -47,7 +47,7 @@
             <span
               v-for="(synonym, index) in definition.synonyms"
               :key="index"
-              class="b-definitions__synonyms-span"
+              :class="`b-definitions__synonyms-span ${store.fontBold}`"
               @click.prevent="handleLink(synonym)"
               >{{ synonym }}</span
             >
@@ -88,8 +88,8 @@
 
     <div v-if="!hasResults && !store.empty && !store.invalid" class="b-definitions__none">
       <img src="../assets/images/" alt="" />
-      <h1>🙁</h1>
-      <h2>No Definitions Found</h2>
+      <h1 class="b-definitions__none-emoji">🙁</h1>
+      <h3 :class="`${store.fontBold}`">No Definitions Found</h3>
       <p>
         Sorry pal, we couldn't find definitions for the word you were looking for. You can try the
         search again at later time or head to the web instead.

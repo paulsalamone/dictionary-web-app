@@ -176,7 +176,7 @@
     justify-content: space-between;
     background-color: $lightergrey;
     border-radius: 16px;
-    padding: .25rem .75rem;
+    padding: .2rem 1.2rem;
     border-width: 2px;
     border-style: solid;
     transition: border-color 200ms, box-shadow 200ms;
@@ -257,7 +257,6 @@
   }
 
   &__pos {
-    font-weight: 700;
     font-style: italic;
     display: flex;
     place-items: center center;
@@ -288,8 +287,8 @@
     font-size: 20px;
     line-height: 24px;
     color: $mediumgrey;
-    margin-top: 2rem;
-
+    margin-top: 2.25rem;
+    margin-bottom: 1.25rem;
   }
 
   &__bullet {
@@ -305,9 +304,7 @@
 
   &__synonyms {
     color: $purple;
-    margin-left: 1rem;
     text-decoration: none;
-    cursor: pointer;
     color: $mediumgrey;
     font-size: 20px;
     line-height: 24px;
@@ -316,12 +313,15 @@
     &-span {
       margin-left: 1rem;
       color: $purple;
+      cursor: pointer;
+    }
+
+    &-span:hover {
+      text-decoration: underline;
     }
   }
 
-  &__synonyms:hover {
-    text-decoration: underline;
-  }
+
 
   &__examples {
     color: $mediumgrey;
@@ -350,5 +350,37 @@
       color: $darkgrey3;
       margin: 0 .5rem;
     }
+  }
+
+  &__none {
+    text-align: center;
+
+    * {
+      margin: .25;
+    }
+
+
+    &-emoji {
+      font-size: 4rem;
+      margin-bottom: -.5rem;
+    }
+  }
+}
+
+.b-audio__play {
+  position: relative;
+  transform: translateX(-80px);
+
+  &-circle {
+    background-color: white;
+    clip-path: circle(47%);
+    width: 75px;
+    height: 75px;
+    position: absolute;
+  }
+
+  img {
+    position: absolute;
+
   }
 }

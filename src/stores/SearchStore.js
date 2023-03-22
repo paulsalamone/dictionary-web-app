@@ -9,7 +9,6 @@ export const useSearchStore = defineStore({
         invalid: false,
         fontBold: null
     }),
-
     actions: {
         handleEmpty() {
             this.empty = true;
