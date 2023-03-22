@@ -1,14 +1,18 @@
 <template>
   <div class="b-font-selector">
-    <div v-if="!expanded" class="b-font-selector__collapsed" @click="handleExpand">
+    <div
+      v-if="!expanded"
+      :class="`b-font-selector__collapsed ${store.fontBold}`"
+      @click="handleExpand"
+    >
       {{ currentFontName }}
       <img src="../assets/images/icon-arrow-down.svg" alt="arrow pointing down" />
     </div>
     <div v-else class="b-font-selector__expanded">
       <ul>
         <li class="san-serif-bold" @click="handleSelect('san-serif')">Sans Serif</li>
-        <li class="serif" @click="handleSelect('serif')">Serif</li>
-        <li class="mono" @click="handleSelect('mono')">Mono</li>
+        <li class="serif-bold" @click="handleSelect('serif')">Serif</li>
+        <li class="mono-bold" @click="handleSelect('mono')">Mono</li>
       </ul>
     </div>
   </div>

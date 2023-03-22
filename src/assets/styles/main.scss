@@ -50,6 +50,9 @@ $small: 480px;
 .b-style-selectors {
   @include flex-row;
 
+  @media screen and (max-width: $small) {
+    font-size: 16px;
+  }
 
   .b-fonts {
     @include flex-row;
