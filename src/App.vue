@@ -1,8 +1,5 @@
 <template>
   <div class="b-wrapper">
-    <h2 class="san-serif-bold">dictionary</h2>
-    <p class="serif-bold">fsdfsjdkjsfkj</p>
-    <p class="mono-bold">sfkdfslkkjldfs</p>
     <header class="b-header">
       <img
         src="./assets/images/logo.svg"

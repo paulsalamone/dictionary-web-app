@@ -1,6 +1,5 @@
 <template>
   <div class="b-font-selector">
-    <p>{{ currentFont }} • {{ currentFontBold }}</p>
     <div v-if="!expanded" class="b-font-selector__collapsed" @click="handleExpand">
       {{ currentFontName }}
       <img src="../assets/images/icon-arrow-down.svg" alt="arrow pointing down" />
@@ -37,22 +36,20 @@ const currentFontName = computed(() => {
     ? 'San Serif'
     : currentFont.value === 'serif'
     ? 'Serif'
-    : 'Mono'
+    : currentFont.value === 'mono'
+    ? 'Mono'
+    : 'San-Serif'
 })
 onMounted(() => {
   currentFont.value = localStorage.getItem('font')
-  currentFontBold.value = localStorage.getItem('font-bold')
-  console.log('fs mounted with', currentFont.value, currentFontBold.value)
+  currentFontBold.value = localStorage.getItem('fontBold')
 })
 
 watch(currentFont, (val) => {
-  console.log('watch font', val)
   store.setFont(val)
 })
 
 watch(currentFontBold, (val) => {
-  console.log('watch font bold', val)
-
   store.setFontBold(val)
 })
 

@@ -58,7 +58,6 @@ html[data-font="serif"] {
     font-weight: 400;
 }
 
-
 html[data-font="mono"] {
     font-family: $mono;
     font-weight: 400;
@@ -74,17 +73,14 @@ html[data-fontBold="serif-bold"] {
     // font-weight: 400;
 }
 
-
 html[data-fontBold="mono-bold"] {
     font-family: $mono-bold;
     // font-weight: 400;
 }
 
-
 .san-serif {
     font-family: $san-serif;
 }
-
 
 .serif {
     font-family: $serif;

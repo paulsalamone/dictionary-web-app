@@ -11,7 +11,7 @@
       @mouseleave="() => (isHover = false)"
     >
       <input
-        class="b-search__form-input"
+        :class="`b-search__form-input ${store.fontBold}`"
         type="search"
         placeholder="enter word"
         v-model="word"
@@ -54,7 +54,7 @@
 </template>
 
 <script setup >
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useSearchStore } from '../stores/SearchStore'
 const store = useSearchStore()
 
