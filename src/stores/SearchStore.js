@@ -7,10 +7,8 @@ export const useSearchStore = defineStore({
         searchResponse: {},
         empty: false,
         invalid: false,
-        font: null,
-        theme: null
+        fontBold: null
     }),
-
     actions: {
         handleEmpty() {
             this.empty = true;
@@ -26,11 +24,19 @@ export const useSearchStore = defineStore({
             this.htmlEl = document.getElementsByTagName('html')[0]
             localStorage.setItem('font', font)
             this.htmlEl.dataset.font = font;
+            // this.font = font;
+        },
+        setFontBold(font) {
+            this.htmlEl = document.getElementsByTagName('html')[0]
+            localStorage.setItem('fontBold', font)
+            this.htmlEl.dataset.fontBold = font;
+            this.fontBold = font;
         },
         setTheme(theme) {
             this.htmlEl = document.getElementsByTagName('html')[0]
             localStorage.setItem('theme', theme)
             this.htmlEl.dataset.theme = theme;
+            // this.theme = theme;
         },
         async searchDictionary(word) {
             this.empty = false;

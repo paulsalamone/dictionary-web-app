@@ -1,28 +1,51 @@
 @font-face {
-    font-family: 'Inter-VariableFont_slnt\,wght';
-    src: url('../../../fonts/inter/Inter-VariableFont_slnt\,wght.ttf') format("truetype");
-    font-weight: normal;
+    font-family: 'Inter-Regular';
+    src: url('../../../fonts/inter/static/Inter-Regular.ttf') format("truetype");
+
+}
+
+@font-face {
+    font-family: 'Lora-Regular.ttf';
+    src: url('../../../fonts/lora/static/Lora-Regular.ttf') format("truetype");
+
+}
+
+@font-face {
+    font-family: 'Inconsolata-Regular';
+    src: url('../../../fonts/inconsolata/static/Inconsolata-Regular.ttf') format("truetype");
+
+}
+
+// -----------
+@font-face {
+    font-family: 'Inter-Bold';
+    src: url('../../../fonts/inter/static/Inter-Bold.ttf') format("truetype");
+    font-weight: bold;
     font-size: normal;
 }
 
 @font-face {
-    font-family: 'Lora-VariableFont_wght.ttf';
-    src: url('../../../fonts/lora/Lora-VariableFont_wght.ttf') format("truetype");
-    font-weight: normal;
+    font-family: 'Lora-Bold';
+    src: url('../../../fonts/lora/static/Lora-Bold.ttf') format("truetype");
+    font-weight: bold;
     font-size: normal;
 }
 
 @font-face {
-    font-family: 'Inconsolata-VariableFont_wdth\,wght';
-    src: url('../../../fonts/inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf') format("truetype");
-    font-weight: normal;
+    font-family: 'Inconsolata-Bold';
+    src: url('../../../fonts/inconsolata/static/Inconsolata-Bold.ttf') format("truetype");
+    font-weight: bold;
     font-size: normal;
 }
 
 
-$san-serif: 'Inter-VariableFont_slnt\,wght';
-$serif: 'Lora-VariableFont_wght.ttf';
-$mono: 'Inconsolata-VariableFont_wdth\,wght';
+$san-serif: 'Inter-Regular';
+$serif: 'Lora-Regular.ttf';
+$mono: 'Inconsolata-Regular';
+
+$san-serif-bold: 'Inter-Bold';
+$serif-bold: 'Lora-Bold';
+$mono-bold: 'Inconsolata-Bold';
 
 
 html[data-font="san-serif"] {
@@ -35,17 +58,29 @@ html[data-font="serif"] {
     font-weight: 400;
 }
 
-
 html[data-font="mono"] {
     font-family: $mono;
     font-weight: 400;
 }
 
+html[data-fontBold="san-serif-bold"] {
+    font-family: $san-serif-bold;
+    // font-weight: 400;
+}
+
+html[data-fontBold="serif-bold"] {
+    font-family: $serif-bold;
+    // font-weight: 400;
+}
+
+html[data-fontBold="mono-bold"] {
+    font-family: $mono-bold;
+    // font-weight: 400;
+}
 
 .san-serif {
     font-family: $san-serif;
 }
-
 
 .serif {
     font-family: $serif;
@@ -53,4 +88,16 @@ html[data-font="mono"] {
 
 .mono {
     font-family: $mono;
+}
+
+.san-serif-bold {
+    font-family: $san-serif-bold;
+}
+
+.serif-bold {
+    font-family: $serif-bold;
+}
+
+.mono-bold {
+    font-family: $mono-bold;
 }

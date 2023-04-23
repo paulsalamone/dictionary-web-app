@@ -1,6 +1,8 @@
 @import './colors.scss', './fonts.scss', './layout.scss';
 
 
+$small: 480px;
+
 @mixin flex-row {
   display: flex;
   justify-content: space-between;
@@ -12,11 +14,22 @@
   display: flex;
   justify-content: center;
   padding: 1rem;
+
+  @media screen and (max-width: $small) {
+    padding: .25rem;
+  }
+
+
 }
 
 .b-wrapper {
   width: 80%;
   max-width: 750px;
+
+  @media screen and (max-width: $small) {
+    width: 90%;
+  }
+
 }
 
 .b-header {
@@ -37,15 +50,8 @@
 .b-style-selectors {
   @include flex-row;
 
-  .b-fonts2 {
-    color: orange;
-
-    &__select {
-      display: flex;
-      flex-direction: column;
-
-      &-option {}
-    }
+  @media screen and (max-width: $small) {
+    font-size: 16px;
   }
 
   .b-fonts {
@@ -128,7 +134,9 @@
   justify-content: flex-end;
   align-items: flex-start;
 
-  margin-right: 2rem;
+  padding-right: 1rem;
+  border-right: 1px solid $lightgrey;
+  margin-right: .5rem;
 
 
   &__collapsed {
@@ -184,7 +192,7 @@
     justify-content: space-between;
     background-color: $lightergrey;
     border-radius: 16px;
-    padding: 1rem;
+    padding: .2rem 1.2rem;
     border-width: 2px;
     border-style: solid;
     transition: border-color 200ms, box-shadow 200ms;
@@ -192,7 +200,7 @@
 
     input[type="search"] {
       background-color: $lightergrey;
-      font-size: 2rem;
+      font-size: 1.25rem;
       border: 1px solid transparent;
       border-radius: inherit;
       width: 100%;
@@ -204,6 +212,7 @@
 
     input[type="search"]::placeholder {
       outline: none;
+      color: $mediumgrey;
     }
 
     input[type="search"]::-webkit-search-decoration,
@@ -241,9 +250,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-
-
   }
 
   &__top * {
@@ -255,16 +261,26 @@
     line-height: 77px;
     font-weight: 900;
     color: $darkgrey3;
+
+    @media screen and (max-width: $small) {
+      font-size: 32px;
+      line-height: 40px;
+    }
+
   }
 
   &__phonetic {
     font-size: 24px;
     line-height: 29px;
     color: $purple;
+
+    @media screen and (max-width: $small) {
+      font-size: 18px;
+    }
+
   }
 
   &__pos {
-    font-weight: 700;
     font-style: italic;
     display: flex;
     place-items: center center;
@@ -280,6 +296,12 @@
       font-size: 24px;
       line-height: 29px;
       color: $darkgrey3;
+
+
+      @media screen and (max-width: $small) {
+        font-size: 18px;
+      }
+
     }
 
     &-line {
@@ -295,14 +317,23 @@
     font-size: 20px;
     line-height: 24px;
     color: $mediumgrey;
-    margin-top: 2rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1.25rem;
 
+    @media screen and (max-width: $small) {
+      font-size: 16px;
+    }
   }
 
   &__bullet {
     color: $darkgrey2;
     font-size: 18px;
     line-height: 24px;
+
+    @media screen and (max-width: $small) {
+      font-size: 16px;
+      line-height: 21px;
+    }
   }
 
   &__bullet::marker {
@@ -312,23 +343,28 @@
 
   &__synonyms {
     color: $purple;
-    margin-left: 1rem;
     text-decoration: none;
-    cursor: pointer;
     color: $mediumgrey;
     font-size: 20px;
     line-height: 24px;
     margin-top: 2rem;
 
+    @media screen and (max-width: $small) {
+      font-size: 16px;
+    }
+
     &-span {
       margin-left: 1rem;
       color: $purple;
+      cursor: pointer;
+    }
+
+    &-span:hover {
+      text-decoration: underline;
     }
   }
 
-  &__synonyms:hover {
-    text-decoration: underline;
-  }
+
 
   &__examples {
     color: $mediumgrey;
@@ -356,6 +392,52 @@
       align-items: center;
       color: $darkgrey3;
       margin: 0 .5rem;
+    }
+  }
+
+  &__none {
+    text-align: center;
+
+    * {
+      margin: .25;
+    }
+
+
+    &-emoji {
+      font-size: 4rem;
+      margin-bottom: -.5rem;
+    }
+  }
+}
+
+.b-audio__play {
+  position: relative;
+  transform: translateX(-80px);
+
+  @media screen and (max-width: $small) {
+    transform: translate(-50px, -25px);
+  }
+
+  &-circle {
+    background-color: white;
+    clip-path: circle(47%);
+    width: 75px;
+    height: 75px;
+    position: absolute;
+
+    @media screen and (max-width: $small) {
+      width: 50px;
+      height: 50px;
+    }
+
+  }
+
+  img {
+    position: absolute;
+
+    @media screen and (max-width: $small) {
+      width: 50px;
+      height: 50px;
     }
   }
 }

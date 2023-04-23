@@ -11,7 +11,7 @@
       @mouseleave="() => (isHover = false)"
     >
       <input
-        class="b-search__form-input"
+        :class="`b-search__form-input ${store.fontBold}`"
         type="search"
         placeholder="enter word"
         v-model="word"
@@ -27,6 +27,7 @@
         id="submit-button"
         @focus="handleFocusBlur('focus')"
         @blur="handleFocusBlur('blur')"
+        style="cursor: pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +55,7 @@
 </template>
 
 <script setup >
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useSearchStore } from '../stores/SearchStore'
 const store = useSearchStore()
 

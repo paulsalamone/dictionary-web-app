@@ -40,13 +40,16 @@ onMounted(() => {
   if (localStorage.getItem('font') === null) {
     localStorage.setItem('font', 'san-serif')
     htmlEl.value.dataset.font = 'san-serif'
+    localStorage.setItem('fontBold', 'san-serif-bold')
+    htmlEl.value.dataset.fontBold = 'san-serif-bold'
   } else {
     htmlEl.value.dataset.font = localStorage.getItem('font')
+    htmlEl.value.dataset.fontBold = localStorage.getItem('font-bold')
   }
 })
 
 const handleReload = () => {
-  store.searchDictionary('keyboard')
+  store.searchDictionary('dictionary')
 }
 </script>
 

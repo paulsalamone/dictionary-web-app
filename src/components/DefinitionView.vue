@@ -9,7 +9,9 @@
       <!-- HEADER -->
       <div class="b-definitions__header">
         <div class="b-definitions__top">
-          <h1 class="b-definitions__word">{{ results.word }}</h1>
+          <h1 :class="`b-definitions__word ${store.fontBold}`">
+            <b> {{ results.word }}</b>
+          </h1>
           <h4 class="b-definitions__phonetic">{{ results.phonetic }}</h4>
         </div>
         <AudioPlayer v-if="audioLink !== ''" :phonetics="results.phonetics" />
@@ -18,7 +20,7 @@
       <!-- MEANINGS -->
       <div v-for="(meaning, index) in results.meanings" :key="index">
         <!-- POS -->
-        <div class="b-definitions__pos">
+        <div :class="`b-definitions__pos ${store.fontBold}`">
           <h2 class="b-definitions__pos-heading">
             {{ meaning.partOfSpeech }}
           </h2>
@@ -45,7 +47,7 @@
             <span
               v-for="(synonym, index) in definition.synonyms"
               :key="index"
-              class="b-definitions__synonyms-span"
+              :class="`b-definitions__synonyms-span ${store.fontBold}`"
               @click.prevent="handleLink(synonym)"
               >{{ synonym }}</span
             >
@@ -76,7 +78,7 @@
       <!-- <hr /> -->
       <p class="b-definitions__source">
         Source:
-        <a :href="results.sourceUrls" class="b-definitions__source-url">{{
+        <a :href="results.sourceUrls" class="b-definitions__source-url" target="blank">{{
           results.sourceUrls[0]
         }}</a
         ><img src="../assets/images/icon-new-window.svg" alt="" />
@@ -85,11 +87,12 @@
     <!-- NO DEFINITIONS -->
 
     <div v-if="!hasResults && !store.empty && !store.invalid" class="b-definitions__none">
-      <img src="../assets/images/" alt="" />
-      <h1>🙁</h1>
-      <h2>No Definitions Found</h2>
+      <h1 class="b-definitions__none-emoji">🙁</h1>
+      <h3 :class="`${store.searchString}`">
+        No definitions found for <i>"{{ store.searchString }}"</i>
+      </h3>
       <p>
-        Sorry pal, we couldn't find definitions for the word you were looking for. You can try the
+        Sorry, we couldn't find definitions for the word you were looking for. You can try the
         search again at later time or head to the web instead.
       </p>
     </div>

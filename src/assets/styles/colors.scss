@@ -32,16 +32,16 @@ html[data-theme="dark"] {
 
     .b-search {
         &__form {
-            background-color: $darkgrey3;
+            background-color: $darkgrey2;
 
             input[type="search"] {
-                background-color: $darkgrey3;
+                background-color: $darkgrey2;
                 color: white;
             }
 
             button[type="submit"] {
 
-                background-color: $darkgrey3;
+                background-color: $darkgrey2;
             }
         }
     }
@@ -58,6 +58,16 @@ html[data-theme="dark"] {
             border-color: $darkgrey2
         }
     }
+
+    .b-definitions__source-url {
+        color: $mediumgrey;
+    }
+
+    .b-definitions__source {
+        border-color: $darkgrey2
+    }
+
+
 
 
 }
