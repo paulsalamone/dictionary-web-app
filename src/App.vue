@@ -49,7 +49,7 @@ onMounted(() => {
 })
 
 const handleReload = () => {
-  store.searchDictionary('keyboard')
+  store.searchDictionary('dictionary')
 }
 </script>
 

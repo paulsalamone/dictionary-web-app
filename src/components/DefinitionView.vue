@@ -89,9 +89,11 @@
     <div v-if="!hasResults && !store.empty && !store.invalid" class="b-definitions__none">
       <img src="../assets/images/" alt="" />
       <h1 class="b-definitions__none-emoji">🙁</h1>
-      <h3 :class="`${store.fontBold}`">No Definitions Found</h3>
+      <h3 :class="`${store.searchString}`">
+        No definitions found for <i>"{{ store.searchString }}"</i>
+      </h3>
       <p>
-        Sorry pal, we couldn't find definitions for the word you were looking for. You can try the
+        Sorry, we couldn't find definitions for the word you were looking for. You can try the
         search again at later time or head to the web instead.
       </p>
     </div>
