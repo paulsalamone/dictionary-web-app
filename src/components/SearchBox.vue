@@ -27,6 +27,7 @@
         id="submit-button"
         @focus="handleFocusBlur('focus')"
         @blur="handleFocusBlur('blur')"
+        style="cursor: pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

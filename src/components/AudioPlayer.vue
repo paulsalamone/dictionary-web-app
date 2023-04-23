@@ -2,7 +2,13 @@
   <div v-if="showAudio" class="b-audio">
     <div class="b-audio__play">
       <div class="b-audio__play-circle"></div>
-      <img src="../assets/images/icon-play.svg" alt="" :key="audioFile" @click="handlePlay" />
+      <img
+        src="../assets/images/icon-play.svg"
+        alt=""
+        :key="audioFile"
+        @click="handlePlay"
+        style="cursor: pointer"
+      />
       <audio :key="audioFile" id="audio-player">
         <source :src="audioFile ?? audioFile" type="audio/mp3" />
       </audio>

@@ -87,7 +87,6 @@
     <!-- NO DEFINITIONS -->
 
     <div v-if="!hasResults && !store.empty && !store.invalid" class="b-definitions__none">
-      <img src="../assets/images/" alt="" />
       <h1 class="b-definitions__none-emoji">🙁</h1>
       <h3 :class="`${store.searchString}`">
         No definitions found for <i>"{{ store.searchString }}"</i>

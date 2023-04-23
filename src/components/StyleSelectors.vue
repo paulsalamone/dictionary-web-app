@@ -2,7 +2,11 @@
   <div class="b-style-selectors">
     <FontSelector />
     <div class="b-colors">
-      <div :class="`b-colors__toggler b-colors__toggler-${currentTheme}`" @click="toggleTheme()">
+      <div
+        :class="`b-colors__toggler b-colors__toggler-${currentTheme}`"
+        @click="toggleTheme()"
+        style="cursor: pointer"
+      >
         <div :class="`b-colors__knob b-colors__knob-${currentTheme}`"></div>
       </div>
 
